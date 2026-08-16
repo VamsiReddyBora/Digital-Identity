@@ -244,11 +244,30 @@
   scene.add(forestSpores);
 
   // ==========================================================================
-  // 4. ANIMATION LOOP
+  // 4. ANIMATION LOOP (With Visibility Pausing for Ultra-Smooth Mobile Scrolling)
   // ==========================================================================
   let clock = new THREE.Clock();
+  let isHeroVisible = true;
+  let isRunning = false;
+
+  const heroEl = document.getElementById('hero');
+  if (heroEl && 'IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      isHeroVisible = entries[0].isIntersecting;
+      if (isHeroVisible && !isRunning) {
+        isRunning = true;
+        animate();
+      }
+    }, { threshold: 0.05 });
+    observer.observe(heroEl);
+  }
 
   function animate() {
+    if (!isHeroVisible) {
+      isRunning = false;
+      return;
+    }
+    isRunning = true;
     requestAnimationFrame(animate);
     const elapsedTime = clock.getElapsedTime();
 
@@ -313,6 +332,6 @@
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
     renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-  });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, window.innerWidth < 768 ? 1 : 2));
+  }, { passive: true });
 })();

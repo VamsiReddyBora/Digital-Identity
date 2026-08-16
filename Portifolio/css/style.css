@@ -549,8 +549,8 @@ section {
    ========================================================================== */
 .hero-corner-hello {
   position: absolute;
-  top: 24px;
-  left: 28px;
+  top: 10px;
+  left: 24px;
   z-index: 10;
   display: flex;
   align-items: center;
@@ -559,7 +559,7 @@ section {
 
 .hero-hello-text {
   font-family: var(--font-primary);
-  font-size: clamp(1.6rem, 3.5vw, 2.6rem);
+  font-size: clamp(1.4rem, 3vw, 2.2rem);
   font-weight: 800;
   letter-spacing: -0.03em;
   color: #0f172a;
