@@ -332,16 +332,25 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ==========================================================================
-  // 15. LENGTHY FOGGY FOREST PARALLAX SCROLL (Moves continuously down to footer)
+  // 15. SEAMLESS MULTI-TILE 5K PARALLAX SCROLL ENGINE
   // ==========================================================================
-  const forestBg = document.getElementById('forest-parallax-bg');
-  if (forestBg) {
-    window.addEventListener('scroll', () => {
+  const parallaxTrack = document.getElementById('parallax-track');
+  if (parallaxTrack) {
+    let ticking = false;
+
+    function updateParallax() {
       const scrollY = window.scrollY || window.pageYOffset;
-      const maxScroll = (document.documentElement.scrollHeight - window.innerHeight) || 1;
-      const progress = Math.min(1, Math.max(0, scrollY / maxScroll));
-      // Continuous hardware-accelerated parallax travel across the entire page
-      forestBg.style.transform = `translate3d(0, -${(progress * 20).toFixed(2)}%, 0)`;
+      // Generous, dynamic 0.45 parallax motion across the multi-tile seamless track
+      parallaxTrack.style.transform = `translate3d(0, ${-(scrollY * 0.45).toFixed(2)}px, 0)`;
+      ticking = false;
+    }
+
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        window.requestAnimationFrame(updateParallax);
+        ticking = true;
+      }
     }, { passive: true });
+    updateParallax();
   }
 });

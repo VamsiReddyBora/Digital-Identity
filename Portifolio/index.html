@@ -31,8 +31,17 @@
 </head>
 <body>
 
-  <!-- Foggy Wet Greenery Forest Parallax Background Layer -->
-  <div class="forest-parallax-layer" id="forest-parallax-bg" aria-hidden="true"></div>
+  <!-- Multi-Tile Seamless 5K Background Layer (Zero-Zoom, Continuous Motion) -->
+  <div class="forest-parallax-layer" id="forest-parallax-bg" aria-hidden="true">
+    <div class="parallax-track" id="parallax-track">
+      <div class="parallax-tile tile-1"></div>
+      <div class="parallax-tile tile-2 mirrored"></div>
+      <div class="parallax-tile tile-3"></div>
+      <div class="parallax-tile tile-4 mirrored"></div>
+      <div class="parallax-tile tile-5"></div>
+      <div class="parallax-tile tile-6 mirrored"></div>
+    </div>
+  </div>
 
   <!-- Subtle PCB Circuit Grid Overlay -->
   <div class="pcb-grid-overlay" aria-hidden="true"></div>
@@ -51,6 +60,11 @@
          ========================================================================== -->
     <header class="site-header">
       <nav class="nav-container nav-centered">
+        <!-- Top Left Corner Greeting (Exact Mirror of Contact Me Button) -->
+        <div class="nav-left-brand">
+          <span class="hero-hello-text">Hello,</span>
+        </div>
+
         <div class="nav-pill-group">
           <a href="#about" class="nav-link">About Me</a>
           <a href="#experience" class="nav-link">Experience</a>
@@ -89,10 +103,7 @@
         </div>
 
         <div class="container hero-container-clean">
-          <!-- Top Left Corner Greeting (Dynamically positioned inside container) -->
-          <div class="hero-corner-hello">
-            <span class="hero-hello-text">Hello,</span>
-          </div>
+
 
           <!-- LAYER 3: Standalone Prominent Central Cutout Portrait in Brown Shirt -->
           <div class="hero-center-standalone">

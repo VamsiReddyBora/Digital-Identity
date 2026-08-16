@@ -86,22 +86,51 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Foggy Wet Rainforest Parallax Wallpaper Layer (100% Crisp Visibility) */
+/* Sage Green Abstract 5K Multi-Tile Mirrored Parallax (Zero-Zoom, 100% Seamless) */
 .forest-parallax-layer {
   position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+  background: #030d07;
+}
+
+.parallax-track {
+  position: absolute;
   top: 0;
   left: 0;
   width: 100vw;
-  height: 130vh;
-  background-image: url('../assets/forest-fog-bg.jpg');
-  background-size: cover;
-  background-position: center top;
-  background-repeat: no-repeat;
-  z-index: 0;
-  pointer-events: none;
-  opacity: 0.95;
-  filter: saturate(1.15) brightness(1.02);
+  display: flex;
+  flex-direction: column;
   will-change: transform;
+}
+
+.parallax-tile {
+  width: 100vw;
+  height: calc(100vw * 0.6666);
+  /* Exact 5120x3413 native unzoomed aspect ratio */
+  min-height: 85vh;
+  background-image: url('../assets/sage-green-abstract-5120x3413-26355.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: high-quality;
+  filter: contrast(1.02) brightness(1.01);
+  margin-top: -2px;
+  /* Overlaps tiles by 2px to guarantee zero subpixel gap/line */
+}
+
+.parallax-tile:first-child {
+  margin-top: 0;
+}
+
+.parallax-tile.mirrored {
+  transform: scaleY(-1);
+  /* Mathematically zero seam line / break between tiles */
 }
 
 /* Subtle PCB Schematic Circuit Background Overlay */
@@ -253,28 +282,22 @@ section {
 
 .about-section {
   background: transparent;
-  border-top: 1px solid rgba(16, 185, 129, 0.15);
-  border-bottom: 1px solid rgba(16, 185, 129, 0.15);
 }
 
 .experience-section {
   background: transparent;
-  border-bottom: 1px solid rgba(13, 148, 136, 0.15);
 }
 
 .skills-section {
   background: transparent;
-  border-bottom: 1px solid rgba(34, 197, 94, 0.15);
 }
 
 .projects-showcase {
   background: transparent;
-  border-bottom: 1px solid rgba(6, 182, 212, 0.15);
 }
 
 .testimonials-section {
   background: transparent;
-  border-bottom: 1px solid rgba(139, 92, 246, 0.15);
 }
 
 .contact-section {
@@ -514,6 +537,24 @@ section {
   color: var(--accent-emerald);
 }
 
+/* Left Brand Greeting (Exact Mirror of Right Contact Me Button) */
+.nav-left-brand {
+  position: absolute;
+  left: 0;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+}
+
+.hero-hello-text {
+  font-family: var(--font-primary);
+  font-size: clamp(1.4rem, 3vw, 2.2rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: #000000;
+  line-height: 1;
+}
+
 .nav-actions {
   display: flex;
   align-items: center;
@@ -540,16 +581,6 @@ section {
 /* ==========================================================================
    Hero Section with Oil-Painted Portrait & Decrypt Scrambler
    ========================================================================== */
-/* ==========================================================================
-   Hero Section with iOS Lock Screen Depth Effect & Scramble Typography
-   
-   Depth Layering Hierarchy:
-   - Layer 1: WebGL background canvas / particles (z-index: 1)
-   - Layer 2: Massive middle-layer name typography (z-index: 2)
-   - Layer 3: Cutout portrait image directly in front (z-index: 3)
-   - Layer 4: Top UI content cards, badges, connectors (z-index: 4)
-   ========================================================================== */
-
 .hero-section.hero-depth-stage {
   min-height: 100vh;
   display: flex;
@@ -559,27 +590,6 @@ section {
   padding-bottom: 50px;
   position: relative;
   overflow: hidden;
-}
-
-/* ==========================================================================
-   Top Left Corner Greeting ("Hello,")
-   ========================================================================== */
-.hero-corner-hello {
-  position: absolute;
-  top: -100px;
-  left: 0;
-  z-index: 10;
-  display: flex;
-  align-items: center;
-  pointer-events: none;
-}
-
-.hero-hello-text {
-  font-family: var(--font-primary);
-  font-size: clamp(1.5rem, 4vw, 4.2rem);
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  color: #000000;
 }
 
 /* ==========================================================================
@@ -774,8 +784,6 @@ body.is-scrambling .hero-backdrop-title .sc-char {
 .about-section {
   position: relative;
   background: transparent;
-  border-top: 1px solid rgba(16, 185, 129, 0.15);
-  border-bottom: 1px solid rgba(16, 185, 129, 0.15);
 }
 
 .about-card {
@@ -928,8 +936,6 @@ body.is-scrambling .hero-backdrop-title .sc-char {
 .experience-section {
   position: relative;
   background: transparent;
-  border-top: 1px solid rgba(2, 132, 199, 0.15);
-  border-bottom: 1px solid rgba(2, 132, 199, 0.15);
 }
 
 .section-header {
@@ -1052,8 +1058,6 @@ body.is-scrambling .hero-backdrop-title .sc-char {
 .skills-section {
   position: relative;
   background: transparent;
-  border-top: 1px solid rgba(99, 102, 241, 0.15);
-  border-bottom: 1px solid rgba(99, 102, 241, 0.15);
 }
 
 .skills-grid {
@@ -1134,8 +1138,6 @@ body.is-scrambling .hero-backdrop-title .sc-char {
 .projects-showcase {
   position: relative;
   background: transparent;
-  border-top: 1px solid rgba(5, 150, 105, 0.15);
-  border-bottom: 1px solid rgba(5, 150, 105, 0.15);
 }
 
 .projects-filter-bar {
@@ -1400,8 +1402,6 @@ body.is-scrambling .hero-backdrop-title .sc-char {
 .testimonials-section {
   position: relative;
   background: transparent;
-  border-top: 1px solid rgba(168, 85, 247, 0.15);
-  border-bottom: 1px solid rgba(168, 85, 247, 0.15);
 }
 
 .testimonials-grid {
@@ -1473,7 +1473,6 @@ body.is-scrambling .hero-backdrop-title .sc-char {
 .contact-section {
   position: relative;
   background: transparent;
-  border-top: 1px solid rgba(5, 150, 105, 0.2);
 }
 
 .newsletter-glass-card {
@@ -1821,9 +1820,14 @@ body.is-scrambling .hero-backdrop-title .sc-char {
     -webkit-overflow-scrolling: touch;
   }
 
-  .hero-corner-hello {
-    top: 6px;
-    left: 0;
+  .forest-parallax-layer {
+    background-image: url('../assets/sage-green-abstract-5120x3413-26355.jpg');
+    background-size: cover;
+    background-position: center top;
+  }
+
+  .nav-left-brand {
+    position: static;
   }
 
   .hero-hello-text {
