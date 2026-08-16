@@ -631,11 +631,10 @@ section {
   line-height: 1;
 }
 
-/* Container for CSS Grid Ghost Overlay */
-.hero-backdrop-title.scramble-wrapper {
-  display: inline-grid;
-  grid-template-areas: "overlap";
-  justify-items: center;
+/* Container for CSS Grid Ghost Overlay (Now just static text) */
+.hero-backdrop-title {
+  display: inline-flex;
+  justify-content: center;
   text-align: center;
   font-size: clamp(3.2rem, 7.8vw, 7.5rem);
   font-weight: 900;
@@ -644,28 +643,8 @@ section {
   text-transform: uppercase;
   width: auto;
   cursor: default;
-}
 
-/* 1. Invisible Ghost Layer: Locks the exact dimensions & prevents layout shift */
-.hero-backdrop-title .scramble-ghost {
-  grid-area: overlap;
-  visibility: hidden;
-  pointer-events: none;
-  user-select: none;
-  white-space: nowrap;
-  opacity: 0;
-}
-
-/* 2. Active Overlaid Scramble Layer: Directly in the same grid cell */
-.hero-backdrop-title .scramble-active {
-  grid-area: overlap;
-  position: relative;
-  white-space: nowrap;
-  display: inline;
-}
-
-/* Smooth, Flat Vertical Emerald Gradient Fill (Crisp Glyph Silhouette, No White Lines or Strokes) */
-body:not(.is-scrambling) .hero-backdrop-title .sc-char {
+  /* Smooth, Flat Vertical Emerald Gradient Fill */
   background: linear-gradient(180deg,
       #047857 0%,
       #059669 30%,
@@ -676,27 +655,6 @@ body:not(.is-scrambling) .hero-backdrop-title .sc-char {
   -webkit-text-fill-color: transparent;
   background-clip: text;
   -webkit-text-stroke: 0 transparent;
-}
-
-/* During Scramble: Solid Clean Emerald Green (#10b981), No Strokes or Shadows */
-body.is-scrambling .hero-backdrop-title .sc-char {
-  -webkit-text-fill-color: #10b981;
-  color: #10b981;
-  background: none;
-  -webkit-text-stroke: 0 transparent;
-  text-shadow: none;
-}
-
-/* Fixed Character Slots: tabular nums prevent character width jitter */
-.sc-char {
-  display: inline-block;
-  text-align: center;
-  font-variant-numeric: tabular-nums;
-  white-space: pre;
-  font: inherit;
-  letter-spacing: inherit;
-  line-height: inherit;
-  transition: color 0.05s linear;
 }
 
 .sc-space {
@@ -793,23 +751,9 @@ body.is-scrambling .hero-backdrop-title .sc-char {
   gap: 40px;
   align-items: center;
   position: relative;
-  background: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-  opacity: 0;
-  pointer-events: none;
 }
 
-.about-card::before,
-.about-card::after {
-  display: none !important;
-}
 
-.about-card.is-interactive {
-  pointer-events: auto;
-}
 
 .about-info h2 {
   font-size: 2.5rem;
@@ -1776,7 +1720,7 @@ body.is-scrambling .hero-backdrop-title .sc-char {
    Responsive Breakpoints
    ========================================================================== */
 @media (max-width: 1024px) {
-  .hero-backdrop-title.scramble-wrapper {
+  .hero-backdrop-title {
     font-size: clamp(2.7rem, 7.2vw, 5.8rem);
     transform: translateY(-18%);
   }
@@ -1844,7 +1788,7 @@ body.is-scrambling .hero-backdrop-title .sc-char {
     font-size: clamp(1rem, 3.5vw, 1.8rem);
   }
 
-  .hero-backdrop-title.scramble-wrapper {
+  .hero-backdrop-title {
     font-size: clamp(1.8rem, 6.5vw, 3.6rem);
     width: auto;
   }
