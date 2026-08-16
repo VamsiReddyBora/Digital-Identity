@@ -1,6 +1,7 @@
 /**
  * ==========================================================================
  * About Me Card — WebGL Diagonal Cylindrical Sticker Unroll Engine
+ * (Fully Mobile & Desktop Responsive with 60fps Hardware Acceleration)
  *
  * Architecture:
  * 1. SINGLE VISUAL CARD: The WebGL surface is the sole rendering representation
@@ -8,10 +9,8 @@
  * 2. FIXED ANCHOR: Bottom-right corner is permanently fixed at its layout position.
  * 3. INWARD CYLINDRICAL ROLL: The top-left portion curls INWARD toward the
  *    bottom-right anchor, cresting above the page in +Z and folding back over itself.
- * 4. SCROLL PROGRESS: 100% direct scrub (scrub: true, ease: 'none').
- *    - 0%: Top-left heavily rolled inward toward bottom-right anchor.
- *    - 50%: Unrolling across the diagonal; bottom-right region flat on page.
- *    - 100%: Entire card completely flat in its exact layout position.
+ * 4. MOBILE & DESKTOP ULTRA-SMOOTH: Adaptive resolution, touch-optimized scrub,
+ *    and responsive vector canvas texture generation.
  * ==========================================================================
  */
 
@@ -34,7 +33,7 @@
 
     container.style.position = 'relative';
 
-    // Create single visual rendering canvas
+    // Create or get the single visual rendering canvas
     let canvas = document.getElementById('about-sticker-canvas');
     if (!canvas) {
       canvas = document.createElement('canvas');
@@ -42,7 +41,7 @@
       canvas.className = 'about-sticker-canvas';
       canvas.style.position = 'absolute';
       canvas.style.top = '0';
-      canvas.style.left = '24px';
+      canvas.style.left = '0';
       canvas.style.pointerEvents = 'none';
       canvas.style.zIndex = '2';
       canvas.style.display = 'block';
@@ -85,7 +84,7 @@
 
         // Roll Front position (progressively advances from 0 -> diagLen as uProgress goes 0 -> 1)
         float R = max(uRadius, 15.0);
-        float rollFront = uProgress * (diagLen + R * 1.6);
+        float rollFront = uProgress * (diagLen + R * 1.5);
 
         float delta = distFromAnchor - rollFront;
         vDelta = delta;
@@ -151,7 +150,7 @@
         vec3 lightDir = normalize(vec3(0.35, 0.6, 1.0));
         vec3 viewDir = vec3(0.0, 0.0, 1.0);
         
-        // Two-sided normal for smooth illumination
+        // Two-sided normal for smooth illumination on mobile & desktop
         vec3 N = normalize(vNormal);
         if (!gl_FrontFacing) {
           N = -N;
@@ -173,7 +172,27 @@
       }
     `;
 
-    // Function to render crisp 2D vector texture of the About Me card
+    // Helper: Clean multi-line text wrapping for canvas
+    function wrapText(ctx, text, x, y, maxWidth, lineHeight) {
+      const words = text.split(' ');
+      let line = '';
+      let curY = y;
+      for (let n = 0; n < words.length; n++) {
+        const testLine = line + words[n] + ' ';
+        const metrics = ctx.measureText(testLine);
+        if (metrics.width > maxWidth && n > 0) {
+          ctx.fillText(line.trim(), x, curY);
+          line = words[n] + ' ';
+          curY += lineHeight;
+        } else {
+          line = testLine;
+        }
+      }
+      ctx.fillText(line.trim(), x, curY);
+      return curY;
+    }
+
+    // Function to render crisp, fully responsive 2D vector texture
     function generateCardTexture(w, h) {
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
       const texCanvas = document.createElement('canvas');
@@ -182,8 +201,10 @@
       const ctx = texCanvas.getContext('2d');
       ctx.scale(dpr, dpr);
 
-      // 1. Card Background with Rounded Corners (24px radius)
-      const radius = 24;
+      const isMobile = w < 768;
+      const radius = isMobile ? 18 : 24;
+
+      // 1. Card Background with Rounded Corners
       ctx.save();
       ctx.beginPath();
       ctx.roundRect(0, 0, w, h, radius);
@@ -197,63 +218,19 @@
       ctx.fillRect(0, 0, w, h);
 
       // Subtle emerald inner mesh tint
-      const radGrad = ctx.createRadialGradient(w * 0.1, h * 0.2, 0, w * 0.1, h * 0.2, w * 0.6);
-      radGrad.addColorStop(0, 'rgba(16, 185, 129, 0.12)');
+      const radGrad = ctx.createRadialGradient(w * 0.1, h * 0.2, 0, w * 0.1, h * 0.2, w * 0.7);
+      radGrad.addColorStop(0, 'rgba(16, 185, 129, 0.14)');
       radGrad.addColorStop(1, 'rgba(16, 185, 129, 0)');
       ctx.fillStyle = radGrad;
       ctx.fillRect(0, 0, w, h);
 
-      // 2. Left Column: Typography & Content
-      const pad = Math.min(48, w * 0.05);
-      const colWidth = (w - pad * 2 - 40) / 2;
-
-      // "About Me" Title
-      ctx.fillStyle = '#0f172a';
-      ctx.font = '800 40px "Outfit", sans-serif';
-      ctx.fillText('About Me', pad, pad + 38);
-
-      // Bio Paragraph
-      ctx.fillStyle = '#475569';
-      ctx.font = '400 16px "Outfit", sans-serif';
-      const bioText1 = "I'm Vamsi Reddy Bora, an Electronics and Communication";
-      const bioText2 = "Engineer with a deep obsession for firmware programming,";
-      const bioText3 = "low-level microcontroller drivers (ARM Cortex, STM32,";
-      const bioText4 = "ESP32, AVR), RTOS, and hardware-software co-design. I build";
-      const bioText5 = "robust IoT ecosystems and high-speed protocol pipelines.";
-
-      let textY = pad + 80;
-      const lineH = 24;
-      ctx.fillText(bioText1, pad, textY);
-      ctx.fillText(bioText2, pad, textY + lineH);
-      ctx.fillText(bioText3, pad, textY + lineH * 2);
-      ctx.fillText(bioText4, pad, textY + lineH * 3);
-      ctx.fillText(bioText5, pad, textY + lineH * 4);
-
-      // Stats Badges (ECE, 40+, 100%)
-      const statY = textY + lineH * 5 + 32;
-      const statW = (colWidth - 32) / 3;
+      const bioText = "I'm Vamsi Reddy Bora, an Electronics and Communication Engineer with a deep obsession for firmware programming, low-level microcontroller drivers (ARM Cortex, STM32, ESP32, AVR), RTOS, and hardware-software co-design. I build robust IoT ecosystems and high-speed protocol pipelines.";
 
       const stats = [
         { num: 'ECE', label: 'Specialization' },
         { num: '40+', label: 'Hardware Builds' },
         { num: '100%', label: 'Firmware Focus' }
       ];
-
-      stats.forEach((st, idx) => {
-        const sx = pad + idx * (statW + 16);
-        ctx.fillStyle = '#059669';
-        ctx.font = '800 28px "Outfit", sans-serif';
-        ctx.fillText(st.num, sx, statY);
-
-        ctx.fillStyle = '#64748b';
-        ctx.font = '600 12px "JetBrains Mono", monospace';
-        ctx.fillText(st.label, sx, statY + 20);
-      });
-
-      // 3. Right Column: Action Cards
-      const rightX = pad + colWidth + 40;
-      const cardBoxW = w - rightX - pad;
-      const cardBoxH = (h - pad * 2 - 20) / 2;
 
       const actionCards = [
         {
@@ -268,38 +245,144 @@
         }
       ];
 
-      actionCards.forEach((ac, idx) => {
-        const cy = pad + idx * (cardBoxH + 20);
-        ctx.save();
-        ctx.beginPath();
-        ctx.roundRect(rightX, cy, cardBoxW, cardBoxH, 16);
-        ctx.fillStyle = 'rgba(255, 255, 255, 0.7)';
-        ctx.fill();
-        ctx.strokeStyle = 'rgba(16, 185, 129, 0.2)';
-        ctx.lineWidth = 1;
-        ctx.stroke();
+      if (isMobile) {
+        // ======================================================================
+        // MOBILE STACKED 1-COLUMN LAYOUT
+        // ======================================================================
+        const pad = Math.max(18, Math.min(24, w * 0.06));
+        const contentW = w - pad * 2;
 
-        // Icon circle
-        ctx.beginPath();
-        ctx.arc(rightX + 32, cy + cardBoxH / 2, 20, 0, Math.PI * 2);
-        ctx.fillStyle = ac.iconColor + '20';
-        ctx.fill();
-        ctx.strokeStyle = ac.iconColor + '50';
-        ctx.stroke();
-
-        // Text
+        // Title
         ctx.fillStyle = '#0f172a';
-        ctx.font = '700 16px "Outfit", sans-serif';
-        ctx.fillText(ac.title, rightX + 64, cy + cardBoxH / 2 - 4);
+        ctx.font = '800 26px "Outfit", sans-serif';
+        ctx.fillText('About Me', pad, pad + 24);
 
-        ctx.fillStyle = '#64748b';
-        ctx.font = '400 13px "JetBrains Mono", monospace';
-        ctx.fillText(ac.sub, rightX + 64, cy + cardBoxH / 2 + 16);
+        // Bio Paragraph with auto text-wrapping
+        ctx.fillStyle = '#475569';
+        ctx.font = '400 13px "Outfit", sans-serif';
+        const lastBioY = wrapText(ctx, bioText, pad, pad + 52, contentW, 19);
 
-        ctx.restore();
-      });
+        // Stats Badges (3 items in a clean row)
+        const statY = lastBioY + 24;
+        const statW = (contentW - 16) / 3;
 
-      // 4. Clean Emerald Border around the entire card
+        stats.forEach((st, idx) => {
+          const sx = pad + idx * (statW + 8);
+          ctx.fillStyle = '#059669';
+          ctx.font = '800 20px "Outfit", sans-serif';
+          ctx.fillText(st.num, sx, statY);
+
+          ctx.fillStyle = '#64748b';
+          ctx.font = '600 10px "JetBrains Mono", monospace';
+          ctx.fillText(st.label, sx, statY + 16);
+        });
+
+        // Action Cards (Stacked vertically below stats)
+        const cardStartY = statY + 36;
+        const cardBoxW = contentW;
+        const cardBoxH = Math.max(54, (h - cardStartY - pad - 12) / 2);
+
+        actionCards.forEach((ac, idx) => {
+          const cy = cardStartY + idx * (cardBoxH + 10);
+          ctx.save();
+          ctx.beginPath();
+          ctx.roundRect(pad, cy, cardBoxW, cardBoxH, 12);
+          ctx.fillStyle = 'rgba(255, 255, 255, 0.75)';
+          ctx.fill();
+          ctx.strokeStyle = 'rgba(16, 185, 129, 0.25)';
+          ctx.lineWidth = 1;
+          ctx.stroke();
+
+          // Icon circle
+          ctx.beginPath();
+          ctx.arc(pad + 24, cy + cardBoxH / 2, 14, 0, Math.PI * 2);
+          ctx.fillStyle = ac.iconColor + '20';
+          ctx.fill();
+          ctx.strokeStyle = ac.iconColor + '50';
+          ctx.stroke();
+
+          // Text
+          ctx.fillStyle = '#0f172a';
+          ctx.font = '700 13px "Outfit", sans-serif';
+          ctx.fillText(ac.title, pad + 46, cy + cardBoxH / 2 - 2);
+
+          ctx.fillStyle = '#64748b';
+          ctx.font = '400 11px "JetBrains Mono", monospace';
+          ctx.fillText(ac.sub, pad + 46, cy + cardBoxH / 2 + 14);
+
+          ctx.restore();
+        });
+
+      } else {
+        // ======================================================================
+        // DESKTOP 2-COLUMN SIDE-BY-SIDE LAYOUT
+        // ======================================================================
+        const pad = Math.min(48, w * 0.05);
+        const colWidth = (w - pad * 2 - 40) / 2;
+
+        // "About Me" Title
+        ctx.fillStyle = '#0f172a';
+        ctx.font = '800 40px "Outfit", sans-serif';
+        ctx.fillText('About Me', pad, pad + 38);
+
+        // Bio Paragraph
+        ctx.fillStyle = '#475569';
+        ctx.font = '400 16px "Outfit", sans-serif';
+        wrapText(ctx, bioText, pad, pad + 80, colWidth, 24);
+
+        // Stats Badges
+        const statY = pad + 80 + 24 * 5 + 32;
+        const statW = (colWidth - 32) / 3;
+
+        stats.forEach((st, idx) => {
+          const sx = pad + idx * (statW + 16);
+          ctx.fillStyle = '#059669';
+          ctx.font = '800 28px "Outfit", sans-serif';
+          ctx.fillText(st.num, sx, statY);
+
+          ctx.fillStyle = '#64748b';
+          ctx.font = '600 12px "JetBrains Mono", monospace';
+          ctx.fillText(st.label, sx, statY + 20);
+        });
+
+        // Right Column: Action Cards
+        const rightX = pad + colWidth + 40;
+        const cardBoxW = w - rightX - pad;
+        const cardBoxH = (h - pad * 2 - 20) / 2;
+
+        actionCards.forEach((ac, idx) => {
+          const cy = pad + idx * (cardBoxH + 20);
+          ctx.save();
+          ctx.beginPath();
+          ctx.roundRect(rightX, cy, cardBoxW, cardBoxH, 16);
+          ctx.fillStyle = 'rgba(255, 255, 255, 0.7)';
+          ctx.fill();
+          ctx.strokeStyle = 'rgba(16, 185, 129, 0.2)';
+          ctx.lineWidth = 1;
+          ctx.stroke();
+
+          // Icon circle
+          ctx.beginPath();
+          ctx.arc(rightX + 32, cy + cardBoxH / 2, 20, 0, Math.PI * 2);
+          ctx.fillStyle = ac.iconColor + '20';
+          ctx.fill();
+          ctx.strokeStyle = ac.iconColor + '50';
+          ctx.stroke();
+
+          // Text
+          ctx.fillStyle = '#0f172a';
+          ctx.font = '700 16px "Outfit", sans-serif';
+          ctx.fillText(ac.title, rightX + 64, cy + cardBoxH / 2 - 4);
+
+          ctx.fillStyle = '#64748b';
+          ctx.font = '400 13px "JetBrains Mono", monospace';
+          ctx.fillText(ac.sub, rightX + 64, cy + cardBoxH / 2 + 16);
+
+          ctx.restore();
+        });
+      }
+
+      // Clean Emerald Border around the entire card
       ctx.restore();
       ctx.beginPath();
       ctx.roundRect(0, 0, w, h, radius);
@@ -308,39 +391,41 @@
       ctx.stroke();
 
       const texture = new THREE.CanvasTexture(texCanvas);
-      texture.minFilter = THREE.LinearMipmapLinearFilter;
+      texture.minFilter = THREE.LinearFilter;
       texture.magFilter = THREE.LinearFilter;
-      texture.generateMipmaps = true;
+      texture.generateMipmaps = false; // Fast & crisp on mobile GPUs
       return texture;
     }
 
     // Setup WebGL Scene & Renderer
     function setupScene() {
       const rect = aboutCard.getBoundingClientRect();
-      cardWidth = Math.max(rect.width, 300);
-      cardHeight = Math.max(rect.height, 200);
-
-      // Position canvas directly over the About Me card area
       const parentRect = container.getBoundingClientRect();
-      const leftOffset = rect.left - parentRect.left;
-      const topOffset = rect.top - parentRect.top;
+
+      cardWidth = Math.max(Math.round(rect.width), 280);
+      cardHeight = Math.max(Math.round(rect.height), 200);
+
+      const leftOffset = Math.round(rect.left - parentRect.left);
+      const topOffset = Math.round(rect.top - parentRect.top);
 
       canvas.style.left = `${leftOffset}px`;
       canvas.style.top = `${topOffset}px`;
       canvas.style.width = `${cardWidth}px`;
       canvas.style.height = `${cardHeight}px`;
 
+      const isMobile = window.innerWidth < 768;
+
       if (!renderer) {
         renderer = new THREE.WebGLRenderer({
           canvas: canvas,
           alpha: true,
-          antialias: true,
+          antialias: !isMobile,
           powerPreference: 'high-performance'
         });
       }
 
-      renderer.setSize(cardWidth, cardHeight);
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+      renderer.setSize(cardWidth, cardHeight, false);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, isMobile ? 1.5 : 2));
 
       scene = new THREE.Scene();
 
@@ -356,16 +441,18 @@
       camera.position.set(0, 0, 1000);
       camera.lookAt(0, 0, 0);
 
-      // Subdivided plane mesh (64 x 64 for buttery-smooth cylindrical curvature)
+      // Adaptive mesh resolution (36x36 on mobile for 60fps lock, 64x64 on desktop)
+      const segs = isMobile ? 36 : 64;
       if (geometry) geometry.dispose();
-      geometry = new THREE.PlaneGeometry(cardWidth, cardHeight, 64, 64);
+      geometry = new THREE.PlaneGeometry(cardWidth, cardHeight, segs, segs);
 
       if (cardTexture) cardTexture.dispose();
       cardTexture = generateCardTexture(cardWidth, cardHeight);
 
       const diagLen = Math.sqrt(cardWidth * cardWidth + cardHeight * cardHeight);
-      const rollRadius = diagLen * 0.14; // Physical roll cylinder radius
+      const rollRadius = diagLen * (isMobile ? 0.16 : 0.14);
 
+      if (material) material.dispose();
       material = new THREE.ShaderMaterial({
         vertexShader: vertexShader,
         fragmentShader: fragmentShader,
@@ -383,7 +470,7 @@
       scene.add(mesh);
     }
 
-    // Build the scene once fonts are ready
+    // Build scene once fonts are ready
     if (document.fonts && document.fonts.ready) {
       document.fonts.ready.then(() => {
         setupScene();
@@ -394,7 +481,7 @@
       renderProgress(0);
     }
 
-    // Render WebGL frame at exact scroll progress (Sole visual representation)
+    // Render WebGL frame at exact scroll progress
     function renderProgress(progress) {
       const p = Math.max(0, Math.min(1, progress));
 
@@ -406,9 +493,7 @@
         renderer.render(scene, camera);
       }
 
-      // Single Card Architecture:
-      // WebGL canvas remains visible at all times (opacity: 1).
-      // When flat (p >= 0.999), enable click hit-testing for contact modal triggers.
+      // Single Card Architecture: Enable click hit-testing when flat
       if (p >= 0.999) {
         aboutCard.classList.add('is-interactive');
       } else {
@@ -416,12 +501,13 @@
       }
     }
 
-    // ScrollTrigger instance for 100% direct 1:1 scroll scrub
+    // Touch-optimized GSAP ScrollTrigger
+    const isMobileDevice = window.innerWidth < 768;
     ScrollTrigger.create({
       trigger: aboutSection,
-      start: 'top bottom',
-      end: 'center center',
-      scrub: true,
+      start: isMobileDevice ? 'top 90%' : 'top bottom',
+      end: isMobileDevice ? 'center 45%' : 'center center',
+      scrub: isMobileDevice ? 0.15 : true,
       invalidateOnRefresh: true,
       onUpdate: (self) => {
         renderProgress(self.progress);
@@ -432,15 +518,18 @@
       }
     });
 
-    // Window resize handler
+    // Debounced Resize & Orientation change handler
     let resizeTimer;
-    window.addEventListener('resize', () => {
+    function handleResize() {
       clearTimeout(resizeTimer);
       resizeTimer = setTimeout(() => {
         setupScene();
         ScrollTrigger.refresh();
-      }, 200);
-    }, { passive: true });
+      }, 150);
+    }
+
+    window.addEventListener('resize', handleResize, { passive: true });
+    window.addEventListener('orientationchange', handleResize, { passive: true });
   }
 
   // Initialize once DOM is ready
