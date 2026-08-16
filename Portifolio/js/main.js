@@ -330,4 +330,18 @@ document.addEventListener('DOMContentLoaded', () => {
       dot.style.boxShadow = '';
     });
   });
+
+  // ==========================================================================
+  // 15. LENGTHY FOGGY FOREST PARALLAX SCROLL (Moves continuously down to footer)
+  // ==========================================================================
+  const forestBg = document.getElementById('forest-parallax-bg');
+  if (forestBg) {
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY || window.pageYOffset;
+      const maxScroll = (document.documentElement.scrollHeight - window.innerHeight) || 1;
+      const progress = Math.min(1, Math.max(0, scrollY / maxScroll));
+      // Continuous hardware-accelerated parallax travel across the entire page
+      forestBg.style.transform = `translate3d(0, -${(progress * 20).toFixed(2)}%, 0)`;
+    }, { passive: true });
+  }
 });

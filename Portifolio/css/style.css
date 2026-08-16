@@ -81,10 +81,27 @@ body {
   position: relative;
   min-height: 100vh;
   overflow-x: hidden;
-  background: radial-gradient(circle at 50% 0%, #ede9fe 0%, #f8fafc 45%, #f1f5f9 100%);
-  background-attachment: fixed;
+  background: #030d07;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+}
+
+/* Foggy Wet Rainforest Parallax Wallpaper Layer (100% Crisp Visibility) */
+.forest-parallax-layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 130vh;
+  background-image: url('../assets/forest-fog-bg.jpg');
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.95;
+  filter: saturate(1.15) brightness(1.02);
+  will-change: transform;
 }
 
 /* Subtle PCB Schematic Circuit Background Overlay */
@@ -92,12 +109,12 @@ body {
   position: fixed;
   inset: 0;
   background-image:
-    radial-gradient(circle at 50% 50%, rgba(5, 150, 105, 0.05) 1px, transparent 1px),
-    linear-gradient(to right, rgba(5, 150, 105, 0.02) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(5, 150, 105, 0.02) 1px, transparent 1px);
+    radial-gradient(circle at 50% 50%, rgba(5, 150, 105, 0.04) 1px, transparent 1px),
+    linear-gradient(to right, rgba(5, 150, 105, 0.015) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(5, 150, 105, 0.015) 1px, transparent 1px);
   background-size: 32px 32px, 64px 64px, 64px 64px;
   pointer-events: none;
-  z-index: 0;
+  z-index: 1;
 }
 
 /* Custom Scrollbar */
@@ -231,37 +248,37 @@ section {
 }
 
 .hero-section {
-  background: radial-gradient(circle at 50% 20%, rgba(237, 233, 254, 0.4) 0%, transparent 80%);
+  background: transparent;
 }
 
 .about-section {
-  background: linear-gradient(180deg, rgba(236, 253, 245, 0.6) 0%, rgba(209, 250, 229, 0.3) 100%);
+  background: transparent;
   border-top: 1px solid rgba(16, 185, 129, 0.15);
   border-bottom: 1px solid rgba(16, 185, 129, 0.15);
 }
 
 .experience-section {
-  background: linear-gradient(180deg, rgba(240, 253, 250, 0.6) 0%, rgba(204, 251, 241, 0.35) 100%);
+  background: transparent;
   border-bottom: 1px solid rgba(13, 148, 136, 0.15);
 }
 
 .skills-section {
-  background: linear-gradient(180deg, rgba(240, 253, 244, 0.6) 0%, rgba(220, 252, 231, 0.35) 100%);
+  background: transparent;
   border-bottom: 1px solid rgba(34, 197, 94, 0.15);
 }
 
 .projects-showcase {
-  background: linear-gradient(180deg, rgba(236, 254, 255, 0.6) 0%, rgba(240, 253, 250, 0.35) 100%);
+  background: transparent;
   border-bottom: 1px solid rgba(6, 182, 212, 0.15);
 }
 
 .testimonials-section {
-  background: linear-gradient(180deg, rgba(245, 243, 255, 0.6) 0%, rgba(237, 233, 254, 0.35) 100%);
+  background: transparent;
   border-bottom: 1px solid rgba(139, 92, 246, 0.15);
 }
 
 .contact-section {
-  background: linear-gradient(180deg, rgba(236, 253, 245, 0.5) 0%, rgba(241, 245, 249, 0.8) 100%);
+  background: transparent;
 }
 
 /* ==========================================================================
@@ -323,16 +340,16 @@ section {
 }
 
 /* ==========================================================================
-   Frosted Glass UI Components
+   Frosted Glass UI Components (Lightweight High-Performance Glass)
    ========================================================================== */
 .glass-panel {
-  background: var(--bg-card);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border: 1px solid var(--border-glass);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-glass);
-  transition: all var(--transition-normal);
+  transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
   position: relative;
   overflow: hidden;
 }
@@ -351,9 +368,9 @@ section {
 }
 
 .glass-panel:hover {
-  background: var(--bg-card-hover);
+  background: rgba(255, 255, 255, 0.97);
   border-color: rgba(16, 185, 129, 0.4);
-  box-shadow: 0 20px 45px -10px rgba(5, 150, 105, 0.15), var(--shadow-glow-emerald);
+  box-shadow: 0 16px 35px -8px rgba(5, 150, 105, 0.15), var(--shadow-glow-emerald);
 }
 
 /* Glass Buttons */
@@ -549,8 +566,8 @@ section {
    ========================================================================== */
 .hero-corner-hello {
   position: absolute;
-  top: 10px;
-  left: 24px;
+  top: -100px;
+  left: 0;
   z-index: 10;
   display: flex;
   align-items: center;
@@ -559,10 +576,10 @@ section {
 
 .hero-hello-text {
   font-family: var(--font-primary);
-  font-size: clamp(1.4rem, 3vw, 2.2rem);
+  font-size: clamp(1.5rem, 4vw, 4.2rem);
   font-weight: 800;
   letter-spacing: -0.03em;
-  color: #0f172a;
+  color: #000000;
 }
 
 /* ==========================================================================
@@ -756,9 +773,7 @@ body.is-scrambling .hero-backdrop-title .sc-char {
 /* 1. About Me: Lush Nature Forest & Botanical Glow Theme */
 .about-section {
   position: relative;
-  background: radial-gradient(circle at 10% 20%, rgba(16, 185, 129, 0.12) 0%, transparent 50%),
-    radial-gradient(circle at 90% 80%, rgba(5, 150, 105, 0.14) 0%, transparent 50%),
-    linear-gradient(180deg, rgba(240, 253, 244, 0.6) 0%, rgba(236, 253, 245, 0.85) 100%);
+  background: transparent;
   border-top: 1px solid rgba(16, 185, 129, 0.15);
   border-bottom: 1px solid rgba(16, 185, 129, 0.15);
 }
@@ -912,9 +927,7 @@ body.is-scrambling .hero-backdrop-title .sc-char {
    ========================================================================== */
 .experience-section {
   position: relative;
-  background: radial-gradient(circle at 85% 15%, rgba(2, 132, 199, 0.12) 0%, transparent 50%),
-    radial-gradient(circle at 15% 85%, rgba(6, 182, 212, 0.1) 0%, transparent 50%),
-    linear-gradient(180deg, rgba(240, 249, 255, 0.6) 0%, rgba(224, 242, 254, 0.8) 100%);
+  background: transparent;
   border-top: 1px solid rgba(2, 132, 199, 0.15);
   border-bottom: 1px solid rgba(2, 132, 199, 0.15);
 }
@@ -1038,9 +1051,7 @@ body.is-scrambling .hero-backdrop-title .sc-char {
    ========================================================================== */
 .skills-section {
   position: relative;
-  background: radial-gradient(circle at 50% 10%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 80% 90%, rgba(16, 185, 129, 0.12) 0%, transparent 50%),
-    linear-gradient(180deg, rgba(245, 243, 255, 0.6) 0%, rgba(238, 242, 255, 0.85) 100%);
+  background: transparent;
   border-top: 1px solid rgba(99, 102, 241, 0.15);
   border-bottom: 1px solid rgba(99, 102, 241, 0.15);
 }
@@ -1122,9 +1133,7 @@ body.is-scrambling .hero-backdrop-title .sc-char {
    ========================================================================== */
 .projects-showcase {
   position: relative;
-  background: radial-gradient(circle at 15% 25%, rgba(5, 150, 105, 0.12) 0%, transparent 50%),
-    radial-gradient(circle at 85% 75%, rgba(2, 132, 199, 0.12) 0%, transparent 50%),
-    linear-gradient(180deg, rgba(236, 253, 245, 0.65) 0%, rgba(241, 245, 249, 0.85) 100%);
+  background: transparent;
   border-top: 1px solid rgba(5, 150, 105, 0.15);
   border-bottom: 1px solid rgba(5, 150, 105, 0.15);
 }
@@ -1390,9 +1399,7 @@ body.is-scrambling .hero-backdrop-title .sc-char {
    ========================================================================== */
 .testimonials-section {
   position: relative;
-  background: radial-gradient(circle at 75% 25%, rgba(168, 85, 247, 0.08) 0%, transparent 50%),
-    radial-gradient(circle at 25% 75%, rgba(16, 185, 129, 0.1) 0%, transparent 50%),
-    linear-gradient(180deg, rgba(248, 250, 252, 0.65) 0%, rgba(243, 244, 246, 0.85) 100%);
+  background: transparent;
   border-top: 1px solid rgba(168, 85, 247, 0.15);
   border-bottom: 1px solid rgba(168, 85, 247, 0.15);
 }
@@ -1465,9 +1472,7 @@ body.is-scrambling .hero-backdrop-title .sc-char {
    ========================================================================== */
 .contact-section {
   position: relative;
-  background: radial-gradient(circle at 50% 30%, rgba(5, 150, 105, 0.16) 0%, transparent 55%),
-    radial-gradient(circle at 80% 80%, rgba(2, 132, 199, 0.14) 0%, transparent 50%),
-    linear-gradient(180deg, rgba(240, 253, 244, 0.65) 0%, rgba(236, 253, 245, 0.95) 100%);
+  background: transparent;
   border-top: 1px solid rgba(5, 150, 105, 0.2);
 }
 
@@ -1809,14 +1814,16 @@ body.is-scrambling .hero-backdrop-title .sc-char {
 }
 
 @media (max-width: 768px) {
-  html, body {
+
+  html,
+  body {
     overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
   }
 
   .hero-corner-hello {
-    top: calc(var(--header-height) + 8px);
-    left: 20px;
+    top: 6px;
+    left: 0;
   }
 
   .hero-hello-text {
