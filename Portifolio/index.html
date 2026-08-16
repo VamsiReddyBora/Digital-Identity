@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ==========================================================================
+       USER EDITABLE: PAGE TITLE & METADATA
+       ========================================================================== -->
+  <title>Vamsi Reddy Bora — Electronics & Communication Engineer | Embedded & Firmware Developer</title>
+  <meta name="description" content="Portfolio of Vamsi Reddy Bora - Electronics & Communication Engineer specializing in Embedded Systems, Firmware, IoT Hardware, and Full-Stack Web Development.">
+  <meta name="theme-color" content="#f8fafc">
+
+  <!-- Google Fonts: Outfit & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- GSAP + ScrollTrigger (Scroll-Scrubbed Card Animation Engine) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <!-- Three.js CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Three.js WebGL Canvas Background (C-Language & Firmware Constellation) -->
+  <canvas id="webgl-canvas"></canvas>
+
+  <!-- Subtle PCB Circuit Grid Overlay -->
+  <div class="pcb-grid-overlay" aria-hidden="true"></div>
+
+  <!-- Ambient Light Morphing Orbs -->
+  <div class="bg-ambient-lights" aria-hidden="true">
+    <div class="ambient-orb orb-1"></div>
+    <div class="ambient-orb orb-2"></div>
+    <div class="ambient-orb orb-3"></div>
+  </div>
+
+  <div class="site-wrapper">
+
+    <!-- ==========================================================================
+         USER EDITABLE: HEADER & NAVIGATION
+         ========================================================================== -->
+    <header class="site-header">
+      <nav class="nav-container nav-centered">
+        <div class="nav-pill-group">
+          <a href="#about" class="nav-link">About Me</a>
+          <a href="#experience" class="nav-link">Experience</a>
+          <a href="#skills" class="nav-link">Skills & Tech</a>
+          <a href="#projects" class="nav-link">Projects</a>
+          <a href="#testimonials" class="nav-link">Testimonials</a>
+        </div>
+
+        <div class="nav-actions">
+          <button class="btn btn-primary open-contact-modal magnetic-btn" id="header-contact-btn">
+            <span>Contact Me</span>
+            <i data-lucide="arrow-up-right" style="width: 18px; height: 18px;"></i>
+          </button>
+          <button class="nav-toggle" id="nav-toggle" aria-label="Toggle Menu">
+            <i data-lucide="menu" style="width: 24px; height: 24px;"></i>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <!-- ==========================================================================
+           USER EDITABLE: HERO SECTION (Centered Subject in Brown Shirt + Clean Left & Right)
+           ========================================================================== -->
+      <section class="hero-section hero-depth-stage" id="hero">
+        
+        <!-- Top Left Corner Greeting -->
+        <div class="hero-corner-hello">
+          <span class="hero-hello-text">Hello,</span>
+        </div>
+
+        <!-- LAYER 2: Middle Backdrop Typography (Behind Cutout Portrait) -->
+        <div class="hero-depth-backdrop" aria-hidden="true">
+          <div class="hero-backdrop-title-wrap">
+            <span class="hero-im-prefix">I'm</span>
+            <div class="hero-backdrop-title scramble-wrapper" aria-label="VAMSI REDDY BORA">
+              <span class="scramble-ghost" aria-hidden="true">VAMSI REDDY BORA</span>
+              <span class="scramble-active" aria-hidden="true">VAMSI REDDY BORA</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="container hero-container-clean">
+          <!-- LAYER 3: Standalone Prominent Central Cutout Portrait in Brown Shirt -->
+          <div class="hero-center-standalone">
+            <div class="hero-canvas-glow-wrap">
+              <!-- Liquid Morphing Aura Behind Portrait -->
+              <div class="hero-aura-swirl"></div>
+
+              <!-- Feathered Cutout Portrait Frame (Brown Shirt) -->
+              <div class="hero-portrait-frame">
+                <img src="assets/oil-painted-cutout.png" alt="Vamsi Reddy Bora Portrait" class="hero-portrait-img" id="hero-profile-image" onerror="this.src='assets/profile-cutout.png'">
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           USER EDITABLE: ABOUT ME SECTION
+           ========================================================================== -->
+      <section class="about-section" id="about">
+        <div class="container">
+          <div class="glass-panel about-card tilt-element">
+            
+            <div class="about-info">
+              <h2>About Me</h2>
+              <p class="about-bio">
+                I'm <strong>Vamsi Reddy Bora</strong>, an Electronics and Communication Engineer with a deep obsession for firmware programming, low-level microcontroller drivers (ARM Cortex, STM32, ESP32, AVR), RTOS, and hardware-software co-design. I build robust IoT ecosystems, high-speed communication protocol pipelines, and interactive digital interfaces.
+              </p>
+
+              <!-- Stats & Milestones -->
+              <div class="about-stats">
+                <div class="stat-item">
+                  <span class="stat-number">ECE</span>
+                  <span class="stat-label">Core Specialization</span>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-number">40+</span>
+                  <span class="stat-label">Hardware & Code Builds</span>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-number">100%</span>
+                  <span class="stat-label">Obsessed with Firmware</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Interactive Action Cards -->
+            <div class="about-actions-list">
+              <div class="action-card open-contact-modal">
+                <div class="action-left">
+                  <div class="action-icon icon-purple">
+                    <i data-lucide="cpu" style="width: 22px; height: 22px;"></i>
+                  </div>
+                  <span class="action-text">Embedded Firmware (C/C++, STM32, ESP-IDF, RTOS, Device Drivers).</span>
+                </div>
+                <div class="action-arrow-btn">
+                  <i data-lucide="arrow-up-right" style="width: 20px; height: 20px;"></i>
+                </div>
+              </div>
+
+              <div class="action-card open-contact-modal">
+                <div class="action-left">
+                  <div class="action-icon icon-magenta">
+                    <i data-lucide="network" style="width: 22px; height: 22px;"></i>
+                  </div>
+                  <span class="action-text">Communication Protocols (UART, SPI, I2C, CAN, BLE, MQTT, TCP/IP).</span>
+                </div>
+                <div class="action-arrow-btn">
+                  <i data-lucide="arrow-up-right" style="width: 20px; height: 20px;"></i>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           USER EDITABLE: ENGINEERING SUCCESS STORIES (EXPERIENCE)
+           ========================================================================== -->
+      <section class="experience-section" id="experience">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">Engineering Success Stories</h2>
+            <p class="section-subtitle">Real-world hardware architectures, firmware drivers, and embedded IoT innovations.</p>
+          </div>
+
+          <div class="stories-container">
+            
+            <!-- Story 1: Active Detailed Card -->
+            <div class="glass-panel story-card story-expandable">
+              <div class="story-header">
+                <div>
+                  <h3 class="story-role-title">Lead Embedded Firmware & Systems Engineer</h3>
+                  <div class="story-date">2024 - Present</div>
+                </div>
+                <div class="story-tags-group">
+                  <span class="pill-badge">ARM Cortex-M4</span>
+                  <span class="pill-badge">FreeRTOS</span>
+                  <span class="pill-badge">CAN Bus</span>
+                </div>
+              </div>
+
+              <div class="story-body">
+                <div class="story-mockup-frame">
+                  <div class="mockup-pricing-demo">
+                    <div class="pricing-mini-card">
+                      <div style="font-size: 0.7rem; color: var(--text-muted);">Clock Speed</div>
+                      <div class="pricing-val">168 MHz</div>
+                    </div>
+                    <div class="pricing-mini-card active">
+                      <div style="font-size: 0.7rem; color: var(--accent-violet);">Latency</div>
+                      <div class="pricing-val">&lt; 2.5 µs</div>
+                    </div>
+                    <div class="pricing-mini-card">
+                      <div style="font-size: 0.7rem; color: var(--text-muted);">Throughput</div>
+                      <div class="pricing-val">1 Mbps</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="story-desc-text">
+                  Engineered ultra-low-latency real-time interrupt service routines and DMA-driven peripheral drivers. Optimized memory footprint by 40% using custom zero-copy ring buffers.
+                </div>
+              </div>
+            </div>
+
+            <!-- Story 2: Expandable Card -->
+            <div class="glass-panel story-card story-expandable">
+              <div class="story-header">
+                <div>
+                  <h3 class="story-role-title">IoT & Communication Protocols Specialist</h3>
+                  <div class="story-date">2023 - 2024</div>
+                </div>
+                <div class="story-tags-group">
+                  <span class="pill-badge">ESP32</span>
+                  <span class="pill-badge">MQTT / BLE</span>
+                  <span class="pill-badge">Sensors</span>
+                </div>
+              </div>
+              <div class="story-body hidden">
+                <div class="story-mockup-frame">
+                  <div style="text-align: center; color: var(--text-secondary); font-size: 0.9rem; padding: 20px;">
+                    <i data-lucide="radio" style="width: 32px; height: 32px; color: var(--accent-violet); margin-bottom: 8px;"></i>
+                    <div>Industrial Wireless Sensor Telemetry Node</div>
+                  </div>
+                </div>
+                <div class="story-desc-text">
+                  Deployed multi-node wireless sensor networks streaming telemetry data to cloud dashboards with AES-128 cryptographic payload verification.
+                </div>
+              </div>
+            </div>
+
+            <!-- Story 3: Expandable Card -->
+            <div class="glass-panel story-card story-expandable">
+              <div class="story-header">
+                <div>
+                  <h3 class="story-role-title">Hardware-Software Full-Stack Developer</h3>
+                  <div class="story-date">2022 - 2023</div>
+                </div>
+                <div class="story-tags-group">
+                  <span class="pill-badge">C/C++</span>
+                  <span class="pill-badge">WebSockets</span>
+                  <span class="pill-badge">PCB Design</span>
+                </div>
+              </div>
+              <div class="story-body hidden">
+                <div class="story-mockup-frame">
+                  <div style="text-align: center; color: var(--text-secondary); font-size: 0.9rem; padding: 20px;">
+                    <i data-lucide="circuit-board" style="width: 32px; height: 32px; color: var(--accent-magenta); margin-bottom: 8px;"></i>
+                    <div>Smart Edge Device Gateway</div>
+                  </div>
+                </div>
+                <div class="story-desc-text">
+                  Custom PCB layout design, signal integrity analysis, and full-stack web dashboard integration with real-time hardware telemetry streams.
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           USER EDITABLE: SKILLS & DEVELOPMENT (CORE PILLARS)
+           ========================================================================== -->
+      <section class="skills-section" id="skills">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">My Skills & Engineering Core</h2>
+            <p class="section-subtitle">Core principles guiding every bare-metal driver and modern software system crafted.</p>
+          </div>
+
+          <div class="skills-grid">
+            
+            <!-- Pillar 1: Fast -->
+            <div class="glass-panel skill-pillar-card tilt-element">
+              <div class="skill-pillar-icon">
+                <i data-lucide="zap" style="width: 26px; height: 26px;"></i>
+              </div>
+              <h3 class="skill-pillar-title">Low-Latency Fast</h3>
+              <p class="skill-pillar-desc">
+                Bare-metal register optimization, direct memory access (DMA), and microsecond-level deterministic execution.
+              </p>
+            </div>
+
+            <!-- Pillar 2: Responsive -->
+            <div class="glass-panel skill-pillar-card tilt-element">
+              <div class="skill-pillar-icon">
+                <i data-lucide="cpu" style="width: 26px; height: 26px;"></i>
+              </div>
+              <h3 class="skill-pillar-title">Firmware Driven</h3>
+              <p class="skill-pillar-desc">
+                Clean C/C++ architecture, RTOS task management, peripheral drivers, and power-efficient sleep states.
+              </p>
+            </div>
+
+            <!-- Pillar 3: Intuitive -->
+            <div class="glass-panel skill-pillar-card tilt-element">
+              <div class="skill-pillar-icon">
+                <i data-lucide="git-branch" style="width: 26px; height: 26px;"></i>
+              </div>
+              <h3 class="skill-pillar-title">Protocols & Buses</h3>
+              <p class="skill-pillar-desc">
+                Deep expertise in SPI, I2C, UART, CAN, Modbus, Ethernet, BLE, and wireless RF communication pipelines.
+              </p>
+            </div>
+
+            <!-- Pillar 4: Dynamic -->
+            <div class="glass-panel skill-pillar-card tilt-element">
+              <div class="skill-pillar-icon">
+                <i data-lucide="layers" style="width: 26px; height: 26px;"></i>
+              </div>
+              <h3 class="skill-pillar-title">Full-Stack IoT</h3>
+              <p class="skill-pillar-desc">
+                Bridging edge microcontrollers with modern WebGL dashboards, WebSockets, and cloud endpoints.
+              </p>
+            </div>
+
+          </div>
+
+          <!-- Secondary Development Services -->
+          <div class="dev-services-row">
+            <div class="glass-panel dev-service-card tilt-element">
+              <h3 class="dev-service-title">Microcontroller & Embedded Firmware</h3>
+              <p class="dev-service-desc">
+                STM32 (HAL/LL/Bare-Metal), ESP32, AVR, FreeRTOS, Timer/Counter registers, ADC/DAC conversions, and custom bootloaders.
+              </p>
+            </div>
+
+            <div class="glass-panel dev-service-card tilt-element">
+              <h3 class="dev-service-title">Modern Web & IoT Cloud Telemetry</h3>
+              <p class="dev-service-desc">
+                Interactive real-time web applications using Three.js, WebGL, WebSockets, REST APIs, and responsive glassmorphism interfaces.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           USER EDITABLE: RECENT PROJECTS SECTION
+           ========================================================================== -->
+      <section class="projects-showcase" id="projects">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">My Recent Projects</h2>
+            <p class="section-subtitle">Embedded firmware systems, IoT telemetry hubs, and full-stack software applications.</p>
+          </div>
+
+          <!-- Filter Bar -->
+          <div class="projects-filter-bar">
+            <button class="filter-btn active" data-filter="all">All Projects</button>
+            <button class="filter-btn" data-filter="firmware">Embedded & Firmware</button>
+            <button class="filter-btn" data-filter="iot">IoT & Hardware</button>
+            <button class="filter-btn" data-filter="webapp">Web & Cloud Apps</button>
+          </div>
+
+          <!-- Featured 3D Stage -->
+          <div class="glass-panel project-featured-stage">
+            <div class="stage-info">
+              <span class="pill-badge" style="margin-bottom: 12px;">Featured Hardware Project</span>
+              <h3>STM32 Real-Time Drone Flight Controller</h3>
+              <p class="stage-desc">
+                Custom bare-metal flight controller firmware written in C with complementary sensor fusion filter, 400Hz PID loop, and fail-safe telemetry.
+              </p>
+
+              <div class="stage-metrics">
+                <div class="stage-metric-box">
+                  <div class="stage-metric-val">400Hz</div>
+                  <div class="stage-metric-lbl">Loop Rate</div>
+                </div>
+                <div class="stage-metric-box">
+                  <div class="stage-metric-val">6-DOF</div>
+                  <div class="stage-metric-lbl">IMU Fusion</div>
+                </div>
+                <div class="stage-metric-box">
+                  <div class="stage-metric-val">0.8ms</div>
+                  <div class="stage-metric-lbl">Response</div>
+                </div>
+              </div>
+
+              <button class="btn btn-primary open-contact-modal magnetic-btn">
+                <span>Explore Technical Specs</span>
+                <i data-lucide="external-link" style="width: 18px; height: 18px;"></i>
+              </button>
+            </div>
+
+            <!-- 3D Perspective Device Mockup Showcase -->
+            <div class="stage-devices-wrap">
+              <div class="device-laptop">
+                <div class="laptop-screen">
+                  <div class="laptop-header-bar">
+                    <div class="window-dot dot-red"></div>
+                    <div class="window-dot dot-yellow"></div>
+                    <div class="window-dot dot-green"></div>
+                    <span style="font-size: 0.7rem; color: var(--text-muted); margin-left: 10px;">telemetry.vamsi-iot.io</span>
+                  </div>
+                  <div class="laptop-mock-content">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                      <span style="font-weight: 700; font-size: 0.9rem; font-family: var(--font-mono);">SPI Bus Diagnostics</span>
+                      <span class="pill-badge" style="font-size: 0.7rem; color: #059669;">● 10 MHz Synchronized</span>
+                    </div>
+                    <div style="height: 70px; background: rgba(139, 92, 246, 0.08); border-radius: 6px; display: flex; align-items: flex-end; padding: 6px; gap: 8px;">
+                      <div style="flex:1; height: 45%; background: var(--accent-violet); border-radius: 3px;"></div>
+                      <div style="flex:1; height: 80%; background: var(--accent-violet); border-radius: 3px;"></div>
+                      <div style="flex:1; height: 65%; background: var(--accent-magenta); border-radius: 3px;"></div>
+                      <div style="flex:1; height: 95%; background: var(--accent-cyan); border-radius: 3px;"></div>
+                      <div style="flex:1; height: 90%; background: var(--accent-purple); border-radius: 3px;"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Floating Mobile Device -->
+              <div class="device-mobile">
+                <div style="font-size: 0.65rem; color: var(--text-muted); text-align: center;">9:41 AM</div>
+                <div class="mobile-flight-card">
+                  <div style="font-weight: 700;">Node Status: Active</div>
+                  <div style="font-size: 0.65rem; margin-top: 4px; opacity: 0.9;">ESP32-Mesh: 12 Nodes</div>
+                  <div style="margin-top: 10px; font-weight: 800; font-size: 0.85rem;">24.5°C | 99.8% Signal</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Projects Grid -->
+          <div class="projects-grid">
+            
+            <div class="glass-panel project-card tilt-element" data-category="firmware">
+              <div class="project-img-wrapper">
+                <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #ede9fe 0%, #ddd6fe 100%); display: flex; align-items: center; justify-content: center;">
+                  <i data-lucide="cpu" style="width: 48px; height: 48px; color: #7c3aed;"></i>
+                </div>
+                <div class="project-overlay">
+                  <button class="btn btn-glass open-contact-modal" style="padding: 8px 16px; font-size: 0.85rem;">View Details</button>
+                </div>
+              </div>
+              <div class="project-card-info">
+                <span class="pill-badge" style="align-self: flex-start;">Embedded Firmware</span>
+                <h4 class="project-card-title">CAN Bus Automotive Logger</h4>
+                <p class="project-card-desc">High-speed OBD-II and CAN 2.0B packet sniffer with SD card DMA logging and ring-buffer parsing.</p>
+              </div>
+            </div>
+
+            <div class="glass-panel project-card tilt-element" data-category="iot">
+              <div class="project-img-wrapper">
+                <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%); display: flex; align-items: center; justify-content: center;">
+                  <i data-lucide="wifi" style="width: 48px; height: 48px; color: #ec4899;"></i>
+                </div>
+                <div class="project-overlay">
+                  <button class="btn btn-glass open-contact-modal" style="padding: 8px 16px; font-size: 0.85rem;">View Details</button>
+                </div>
+              </div>
+              <div class="project-card-info">
+                <span class="pill-badge" style="align-self: flex-start;">IoT & Wireless</span>
+                <h4 class="project-card-title">BLE Health Telemetry Monitor</h4>
+                <p class="project-card-desc">Wearable PPG sensor hub streaming heart-rate variability over Bluetooth Low Energy with custom GATT profiles.</p>
+              </div>
+            </div>
+
+            <div class="glass-panel project-card tilt-element" data-category="webapp">
+              <div class="project-img-wrapper">
+                <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%); display: flex; align-items: center; justify-content: center;">
+                  <i data-lucide="layout-grid" style="width: 48px; height: 48px; color: #0284c7;"></i>
+                </div>
+                <div class="project-overlay">
+                  <button class="btn btn-glass open-contact-modal" style="padding: 8px 16px; font-size: 0.85rem;">View Details</button>
+                </div>
+              </div>
+              <div class="project-card-info">
+                <span class="pill-badge" style="align-self: flex-start;">Full-Stack Web</span>
+                <h4 class="project-card-title">3D Hardware Telemetry Viewer</h4>
+                <p class="project-card-desc">WebGL 3D digital twin dashboard displaying real-time sensor orientations with WebSockets.</p>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           USER EDITABLE: TESTIMONIALS SECTION
+           ========================================================================== -->
+      <section class="testimonials-section" id="testimonials">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">What Mentors & Peers Say</h2>
+            <p class="section-subtitle">Collaborations across embedded systems, hardware prototyping, and software engineering.</p>
+          </div>
+
+          <div class="testimonials-grid">
+            
+            <div class="glass-panel testimonial-card tilt-element">
+              <p class="quote-text">
+                Vamsi has a rare, remarkable ability to dig straight into bare-metal register manuals and write rock-solid C firmware that just works. His understanding of timing constraints and hardware debugging is second to none.
+              </p>
+              <div class="author-info">
+                <div class="author-avatar">VR</div>
+                <div>
+                  <div class="author-name">Dr. R. Sharma</div>
+                  <div class="author-role">Professor & Embedded Systems Lab Head</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="glass-panel testimonial-card tilt-element">
+              <p class="quote-text">
+                Working with Vamsi on IoT hardware gateways was effortless. He combined rigorous signal integrity on the PCB with blazing-fast firmware and a stunning web interface.
+              </p>
+              <div class="author-info">
+                <div class="author-avatar" style="background: linear-gradient(135deg, #0284c7, #3b82f6);">AK</div>
+                <div>
+                  <div class="author-name">Anand K.</div>
+                  <div class="author-role">Senior Hardware Engineer</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="glass-panel testimonial-card tilt-element">
+              <p class="quote-text">
+                Vamsi’s passion for electronics and low-level coding is truly infectious. He turns complex communication protocols and RTOS scheduling into elegant, maintainable code.
+              </p>
+              <div class="author-info">
+                <div class="author-avatar" style="background: linear-gradient(135deg, #ec4899, #f97316);">PS</div>
+                <div>
+                  <div class="author-name">Priya S.</div>
+                  <div class="author-role">IoT Solutions Architect</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           USER EDITABLE: NEWSLETTER & CONTACT DETAILS
+           ========================================================================== -->
+      <section class="contact-section" id="contact">
+        <div class="container">
+          
+          <!-- Newsletter Glass Card -->
+          <div class="glass-panel newsletter-glass-card">
+            <h2 class="section-title" style="margin-bottom: 8px;">Connect on Embedded & Hardware Tech</h2>
+            <p class="section-subtitle">Subscribe for updates on bare-metal firmware deep-dives, circuit designs, and IoT project tutorials.</p>
+
+            <form class="newsletter-form" id="newsletter-form">
+              <input type="email" placeholder="Enter your email address" class="newsletter-input" required aria-label="Email for newsletter">
+              <button type="submit" class="btn btn-primary magnetic-btn">
+                <span>Subscribe</span>
+                <i data-lucide="send" style="width: 16px; height: 16px;"></i>
+              </button>
+            </form>
+          </div>
+
+          <!-- Contact Details Cards (Edit your email, phone, location below) -->
+          <div class="contact-details-grid">
+            
+            <div class="glass-panel contact-info-card tilt-element">
+              <div class="contact-icon-box">
+                <i data-lucide="mail" style="width: 24px; height: 24px;"></i>
+              </div>
+              <h4 class="contact-title">Email</h4>
+              <a href="mailto:vamsireddybora@gmail.com" class="contact-val">vamsireddybora@gmail.com</a>
+            </div>
+
+            <div class="glass-panel contact-info-card tilt-element">
+              <div class="contact-icon-box">
+                <i data-lucide="phone" style="width: 24px; height: 24px;"></i>
+              </div>
+              <h4 class="contact-title">Phone</h4>
+              <a href="tel:+919876543210" class="contact-val">+91 98765 43210</a>
+            </div>
+
+            <div class="glass-panel contact-info-card tilt-element">
+              <div class="contact-icon-box">
+                <i data-lucide="map-pin" style="width: 24px; height: 24px;"></i>
+              </div>
+              <h4 class="contact-title">Location</h4>
+              <span class="contact-val">India (Open to Global Remote)</span>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+    </main>
+
+    <!-- ==========================================================================
+         USER EDITABLE: FOOTER
+         ========================================================================== -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-top">
+          <a href="#hero" class="brand-logo">
+            <div class="brand-icon">
+              <i data-lucide="cpu" style="width: 22px; height: 22px; color: #fff;"></i>
+            </div>
+            <span>Vamsi Reddy Bora</span>
+          </a>
+
+          <div class="footer-social-links">
+            <a href="https://github.com" target="_blank" rel="noreferrer" class="floating-badge" style="position: static; animation: none; width: 42px; height: 42px;" aria-label="GitHub">
+              <i data-lucide="github" style="width: 20px; height: 20px;"></i>
+            </a>
+            <a href="https://linkedin.com" target="_blank" rel="noreferrer" class="floating-badge" style="position: static; animation: none; width: 42px; height: 42px;" aria-label="LinkedIn">
+              <i data-lucide="linkedin" style="width: 20px; height: 20px;"></i>
+            </a>
+            <a href="https://twitter.com" target="_blank" rel="noreferrer" class="floating-badge" style="position: static; animation: none; width: 42px; height: 42px;" aria-label="Twitter">
+              <i data-lucide="twitter" style="width: 20px; height: 20px;"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <div>&copy; 2026 Vamsi Reddy Bora. All rights reserved. Electronics & Embedded Systems Portfolio.</div>
+          <div>Crafted with Three.js WebGL & Frosted Glassmorphism.</div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="back-to-top" aria-label="Back to Top">
+      <i data-lucide="chevron-up" style="width: 22px; height: 22px;"></i>
+    </button>
+
+    <!-- ==========================================================================
+         CONTACT FORM MODAL
+         ========================================================================== -->
+    <div class="modal-backdrop" id="contact-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="glass-panel modal-card">
+        <div class="modal-header">
+          <h3 id="modal-title" style="font-size: 1.6rem; font-weight: 800; background: var(--gradient-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Let's Collaborate</h3>
+          <button class="modal-close" id="close-modal" aria-label="Close Modal">&times;</button>
+        </div>
+
+        <form id="contact-form">
+          <div class="form-group">
+            <label for="name" class="form-label">Your Name</label>
+            <input type="text" id="name" class="form-input" placeholder="e.g. Alex Morgan" required>
+          </div>
+
+          <div class="form-group">
+            <label for="email" class="form-label">Email Address</label>
+            <input type="email" id="email" class="form-input" placeholder="e.g. alex@example.com" required>
+          </div>
+
+          <div class="form-group">
+            <label for="message" class="form-label">Project Details / Hardware Inquiry</label>
+            <textarea id="message" class="form-textarea" placeholder="Tell me about your hardware, firmware, or software project..." required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary magnetic-btn" style="width: 100%; margin-top: 10px;">
+            <span>Transmit Message</span>
+            <i data-lucide="send" style="width: 18px; height: 18px;"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Back to Top Button -->
+  <button class="back-to-top-btn" id="back-to-top" aria-label="Back to top">
+    <i data-lucide="arrow-up" style="width: 22px; height: 22px;"></i>
+  </button>
+
+  <!-- Scripts -->
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+  </script>
+  <script src="js/three-scene.js"></script>
+  <script src="js/about-sticker-roll.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
