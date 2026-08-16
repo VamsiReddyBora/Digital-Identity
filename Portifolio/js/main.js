@@ -82,23 +82,16 @@ document.addEventListener('DOMContentLoaded', () => {
   const navToggle = document.getElementById('nav-toggle');
   const navPillGroup = document.querySelector('.nav-pill-group');
 
-  if (navToggle && navPillGroup) {
+  if (navToggle) {
     navToggle.addEventListener('click', () => {
-      const visible = navPillGroup.style.display === 'flex';
-      if (visible) {
-        navPillGroup.style.display = 'none';
-      } else {
-        Object.assign(navPillGroup.style, {
-          display: 'flex',
-          position: 'absolute',
-          top: '70px',
-          left: '20px',
-          right: '20px',
-          flexDirection: 'column',
-          padding: '16px',
-          borderRadius: '16px',
-        });
-      }
+      document.body.classList.toggle('nav-open');
+    });
+
+    // Close menu when clicking a link inside it
+    navPillGroup.querySelectorAll('.nav-link, .menu-contact-btn').forEach(el => {
+      el.addEventListener('click', () => {
+        document.body.classList.remove('nav-open');
+      });
     });
   }
 

@@ -499,6 +499,21 @@ section {
   max-width: var(--container-max);
 }
 
+/* ==========================================================================
+   Responsive Utilities
+   ========================================================================== */
+.mobile-only {
+  display: none !important;
+}
+
+.mobile-brand {
+  font-family: var(--font-primary);
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: 0.5px;
+}
+
 .nav-container.nav-centered {
   justify-content: center;
   position: relative;
@@ -1762,6 +1777,12 @@ section {
   body {
     overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
+    max-width: 100vw;
+    width: 100%;
+  }
+
+  section {
+    padding: 60px 0;
   }
 
   .forest-parallax-layer {
@@ -1778,10 +1799,26 @@ section {
     font-size: 1.35rem;
   }
 
+  /* Utility overrides */
+  .desktop-only { display: none !important; }
+  .mobile-only { display: block !important; }
+  span.mobile-only { display: inline !important; }
+  button.mobile-only, div.mobile-only { display: flex !important; }
+
   .hero-backdrop-title-wrap {
-    transform: translateY(-90%);
-    gap: 8px;
-    padding: 0 12px;
+    transform: translateY(-80%);
+    gap: 12px;
+    padding: 0 20px;
+    text-align: center;
+  }
+
+  .hero-hello-text-mobile {
+    font-family: var(--font-primary);
+    font-size: clamp(1.4rem, 4vw, 2rem);
+    font-weight: 800;
+    color: var(--text-primary);
+    display: block !important;
+    margin-bottom: -4px;
   }
 
   .hero-im-prefix {
@@ -1789,17 +1826,19 @@ section {
   }
 
   .hero-backdrop-title {
-    font-size: clamp(1.8rem, 6.5vw, 3.6rem);
-    width: auto;
+    font-size: clamp(2.5rem, 9vw, 4rem);
+    width: 100%;
+    line-height: 1.1;
+    white-space: normal;
   }
 
   .hero-center-standalone {
-    transform: translateY(20px);
+    transform: translateY(30px);
   }
 
   .hero-section.hero-depth-stage {
     padding-top: calc(var(--header-height) + 10px);
-    min-height: 85vh;
+    min-height: 100svh;
   }
 
   .hero-canvas-glow-wrap {
@@ -1809,10 +1848,43 @@ section {
 
   .nav-pill-group {
     display: none;
+    flex-direction: column;
+    position: fixed;
+    top: var(--header-height);
+    left: 20px;
+    right: 20px;
+    padding: 24px;
+    background: var(--bg-glass-heavy);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    z-index: 99;
+  }
+
+  body.nav-open .nav-pill-group {
+    display: flex !important;
+    animation: menuFadeIn 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  }
+
+  body.nav-open {
+    overflow: hidden;
+  }
+
+  @keyframes menuFadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 
   .nav-toggle {
     display: flex;
+  }
+
+  .menu-contact-btn {
+    margin-top: 12px;
+    width: 100%;
+    justify-content: center;
   }
 
   .about-card {

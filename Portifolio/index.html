@@ -55,19 +55,25 @@
       <nav class="nav-container nav-centered">
         <!-- Top Left Corner Greeting (Exact Mirror of Contact Me Button) -->
         <div class="nav-left-brand">
-          <span class="hero-hello-text">Hello,</span>
+          <span class="hero-hello-text desktop-only">Hello,</span>
+          <span class="mobile-brand mobile-only">VB</span>
         </div>
 
-        <div class="nav-pill-group">
+        <div class="nav-pill-group" id="nav-menu">
           <a href="#about" class="nav-link">About Me</a>
           <a href="#experience" class="nav-link">Experience</a>
           <a href="#skills" class="nav-link">Skills & Tech</a>
           <a href="#projects" class="nav-link">Projects</a>
           <a href="#testimonials" class="nav-link">Testimonials</a>
+          <!-- Mobile prominent CTA -->
+          <button class="btn btn-primary open-contact-modal magnetic-btn mobile-only menu-contact-btn">
+            <span>Contact Me</span>
+            <i data-lucide="arrow-up-right" style="width: 18px; height: 18px;"></i>
+          </button>
         </div>
 
         <div class="nav-actions">
-          <button class="btn btn-primary open-contact-modal magnetic-btn" id="header-contact-btn">
+          <button class="btn btn-primary open-contact-modal magnetic-btn desktop-only" id="header-contact-btn">
             <span>Contact Me</span>
             <i data-lucide="arrow-up-right" style="width: 18px; height: 18px;"></i>
           </button>
@@ -87,9 +93,10 @@
         <!-- LAYER 2: Middle Backdrop Typography (Behind Cutout Portrait) -->
         <div class="hero-depth-backdrop" aria-hidden="true">
           <div class="hero-backdrop-title-wrap">
+            <span class="hero-hello-text-mobile mobile-only">Hello,</span>
             <span class="hero-im-prefix">I'm</span>
             <div class="hero-backdrop-title" aria-label="VAMSI REDDY BORA">
-              VAMSI REDDY BORA
+              VAMSI REDDY<br class="mobile-only"> BORA
             </div>
           </div>
         </div>
