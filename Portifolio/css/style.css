@@ -1809,18 +1809,47 @@ body.is-scrambling .hero-backdrop-title .sc-char {
 }
 
 @media (max-width: 768px) {
+  html, body {
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .hero-corner-hello {
+    top: calc(var(--header-height) + 8px);
+    left: 20px;
+  }
+
+  .hero-hello-text {
+    font-size: 1.35rem;
+  }
+
+  .hero-backdrop-title-wrap {
+    transform: translateY(-90%);
+    gap: 8px;
+    padding: 0 12px;
+  }
+
+  .hero-im-prefix {
+    font-size: clamp(1rem, 3.5vw, 1.8rem);
+  }
+
   .hero-backdrop-title.scramble-wrapper {
-    font-size: clamp(2.1rem, 6.6vw, 4.2rem);
-    transform: translateY(-12%);
+    font-size: clamp(1.8rem, 6.5vw, 3.6rem);
+    width: auto;
+  }
+
+  .hero-center-standalone {
+    transform: translateY(20px);
   }
 
   .hero-section.hero-depth-stage {
-    padding-top: calc(var(--header-height) + 20px);
+    padding-top: calc(var(--header-height) + 10px);
+    min-height: 85vh;
   }
 
   .hero-canvas-glow-wrap {
-    width: 300px;
-    height: 420px;
+    width: 280px;
+    height: 390px;
   }
 
   .nav-pill-group {
@@ -1833,7 +1862,25 @@ body.is-scrambling .hero-backdrop-title .sc-char {
 
   .about-card {
     grid-template-columns: 1fr;
-    padding: 30px 24px;
+    padding: 24px 20px;
+    gap: 24px;
+  }
+
+  /* 60fps Hardware-Accelerated Smooth Scroll Cards on Mobile */
+  .sticker-peel-card {
+    filter: none !important;
+  }
+
+  .sticker-peel-card.peel-left {
+    transform: perspective(800px) translate3d(-40px, 24px, 0) rotateY(-15deg) scale(0.94);
+  }
+
+  .sticker-peel-card.peel-right {
+    transform: perspective(800px) translate3d(40px, 24px, 0) rotateY(15deg) scale(0.94);
+  }
+
+  .sticker-peel-card.peel-center {
+    transform: perspective(800px) translate3d(0, 35px, 0) rotateX(12deg) scale(0.94);
   }
 
   .skills-grid,
@@ -1846,11 +1893,6 @@ body.is-scrambling .hero-backdrop-title .sc-char {
 
   .story-body {
     grid-template-columns: 1fr;
-  }
-
-  .hero-canvas-glow-wrap {
-    width: 300px;
-    height: 420px;
   }
 
   .newsletter-form {
