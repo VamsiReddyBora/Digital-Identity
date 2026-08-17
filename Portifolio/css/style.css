@@ -366,15 +366,17 @@ section {
    Frosted Glass UI Components (Lightweight High-Performance Glass)
    ========================================================================== */
 .glass-panel {
-  background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid var(--border-glass);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-glass);
-  transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
+  transition: translate 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+              box-shadow 0.4s ease, background 0.4s ease;
+  will-change: transform, opacity;
 }
 
 .glass-panel::before {
@@ -388,12 +390,13 @@ section {
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   pointer-events: none;
+  z-index: 2;
 }
 
 .glass-panel:hover {
-  background: rgba(255, 255, 255, 0.97);
-  border-color: rgba(16, 185, 129, 0.4);
-  box-shadow: 0 16px 35px -8px rgba(5, 150, 105, 0.15), var(--shadow-glow-emerald);
+  background: rgba(255, 255, 255, 0.65);
+  translate: 0 -12px;
+  box-shadow: 0 25px 45px -10px rgba(0, 0, 0, 0.15), 0 10px 20px -5px rgba(0, 0, 0, 0.1);
 }
 
 /* Glass Buttons */
@@ -2127,3 +2130,28 @@ section {
 .gsap-scroll-lock body {
   overflow-x: hidden;
 }
+/* ==========================================================================
+   SCROLL-SCRUBBED CARD COMPOSITION ENGINE STYLES
+   ========================================================================== */
+.about-card,
+.story-card,
+.skill-pillar-card,
+.dev-service-card,
+.project-featured-stage,
+.project-card,
+.testimonial-card {
+  will-change: transform, opacity, filter;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+.about-card-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+#about-dom-card {
+  position: relative;
+  z-index: 1;
+}
+

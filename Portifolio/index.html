@@ -124,58 +124,60 @@
            ========================================================================== -->
       <section class="about-section" id="about">
         <div class="container">
-          <div class="glass-panel about-card tilt-element">
-            
-            <div class="about-info">
-              <h2>About Me</h2>
-              <p class="about-bio">
-                I'm <strong>Vamsi Reddy Bora</strong>, an Electronics and Communication Engineer with a deep obsession for firmware programming, low-level microcontroller drivers (ARM Cortex, STM32, ESP32, AVR), RTOS, and hardware-software co-design. I build robust IoT ecosystems, high-speed communication protocol pipelines, and interactive digital interfaces.
-              </p>
+          <div class="about-card-wrapper" id="about-card-wrapper">
+            <div class="glass-panel about-card tilt-element" id="about-dom-card">
+              
+              <div class="about-info">
+                <h2>About Me</h2>
+                <p class="about-bio">
+                  I'm <strong>Vamsi Reddy Bora</strong>, an Electronics and Communication Engineer with a deep obsession for firmware programming, low-level microcontroller drivers (ARM Cortex, STM32, ESP32, AVR), RTOS, and hardware-software co-design. I build robust IoT ecosystems, high-speed communication protocol pipelines, and interactive digital interfaces.
+                </p>
 
-              <!-- Stats & Milestones -->
-              <div class="about-stats">
-                <div class="stat-item">
-                  <span class="stat-number">ECE</span>
-                  <span class="stat-label">Core Specialization</span>
-                </div>
-                <div class="stat-item">
-                  <span class="stat-number">40+</span>
-                  <span class="stat-label">Hardware & Code Builds</span>
-                </div>
-                <div class="stat-item">
-                  <span class="stat-number">100%</span>
-                  <span class="stat-label">Obsessed with Firmware</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Interactive Action Cards -->
-            <div class="about-actions-list">
-              <div class="action-card open-contact-modal">
-                <div class="action-left">
-                  <div class="action-icon icon-purple">
-                    <i data-lucide="cpu" style="width: 22px; height: 22px;"></i>
+                <!-- Stats & Milestones -->
+                <div class="about-stats">
+                  <div class="stat-item">
+                    <span class="stat-number">ECE</span>
+                    <span class="stat-label">Core Specialization</span>
                   </div>
-                  <span class="action-text">Embedded Firmware (C/C++, STM32, ESP-IDF, RTOS, Device Drivers).</span>
-                </div>
-                <div class="action-arrow-btn">
-                  <i data-lucide="arrow-up-right" style="width: 20px; height: 20px;"></i>
-                </div>
-              </div>
-
-              <div class="action-card open-contact-modal">
-                <div class="action-left">
-                  <div class="action-icon icon-magenta">
-                    <i data-lucide="network" style="width: 22px; height: 22px;"></i>
+                  <div class="stat-item">
+                    <span class="stat-number">40+</span>
+                    <span class="stat-label">Hardware & Code Builds</span>
                   </div>
-                  <span class="action-text">Communication Protocols (UART, SPI, I2C, CAN, BLE, MQTT, TCP/IP).</span>
-                </div>
-                <div class="action-arrow-btn">
-                  <i data-lucide="arrow-up-right" style="width: 20px; height: 20px;"></i>
+                  <div class="stat-item">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">Obsessed with Firmware</span>
+                  </div>
                 </div>
               </div>
-            </div>
 
+              <!-- Interactive Action Cards -->
+              <div class="about-actions-list">
+                <div class="action-card open-contact-modal">
+                  <div class="action-left">
+                    <div class="action-icon icon-purple">
+                      <i data-lucide="cpu" style="width: 22px; height: 22px;"></i>
+                    </div>
+                    <span class="action-text">Embedded Firmware (C/C++, STM32, ESP-IDF, RTOS, Device Drivers).</span>
+                  </div>
+                  <div class="action-arrow-btn">
+                    <i data-lucide="arrow-up-right" style="width: 20px; height: 20px;"></i>
+                  </div>
+                </div>
+
+                <div class="action-card open-contact-modal">
+                  <div class="action-left">
+                    <div class="action-icon icon-magenta">
+                      <i data-lucide="network" style="width: 22px; height: 22px;"></i>
+                    </div>
+                    <span class="action-text">Communication Protocols (UART, SPI, I2C, CAN, BLE, MQTT, TCP/IP).</span>
+                  </div>
+                  <div class="action-arrow-btn">
+                    <i data-lucide="arrow-up-right" style="width: 20px; height: 20px;"></i>
+                  </div>
+                </div>
+              </div>
+
+            </div>
           </div>
         </div>
       </section>
@@ -694,10 +696,14 @@
   </button>
 
   <!-- Scripts -->
+  <script src="js/gsap.min.js"></script>
+  <script src="js/ScrollTrigger.min.js"></script>
+  <script src="js/three.min.js"></script>
   <script>
     // Initialize Lucide Icons
     lucide.createIcons();
   </script>
   <script src="js/main.js"></script>
+  <script src="js/scroll-card-engine.js"></script>
 </body>
 </html>
