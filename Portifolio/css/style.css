@@ -366,10 +366,8 @@ section {
    Frosted Glass UI Components (Lightweight High-Performance Glass)
    ========================================================================== */
 .glass-panel {
-  background: rgba(255, 255, 255, 0.45);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
   box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
   border-radius: 20px;
   position: relative;
@@ -379,22 +377,8 @@ section {
   will-change: transform, opacity;
 }
 
-.glass-panel::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  padding: 1px;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.2) 50%, rgba(16, 185, 129, 0.3) 100%);
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  pointer-events: none;
-  z-index: 2;
-}
-
 .glass-panel:hover {
-  background: rgba(255, 255, 255, 0.65);
+  background: #fafafa;
   translate: 0 -12px;
   box-shadow: 0 25px 45px -10px rgba(0, 0, 0, 0.15), 0 10px 20px -5px rgba(0, 0, 0, 0.1);
 }
@@ -1370,6 +1354,8 @@ section {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
+  perspective: 1200px;
+  transform-style: preserve-3d;
 }
 
 .testimonial-card {
@@ -1378,6 +1364,8 @@ section {
   flex-direction: column;
   justify-content: space-between;
   gap: 20px;
+  transform-origin: top center;
+  backface-visibility: hidden;
 }
 
 .quote-text {
