@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bora Vamsi Reddy — Embedded Systems Engineer</title>
+  <meta name="description" content="Portfolio of Bora Vamsi Reddy, Embedded Systems Engineer specializing in LPC2148 (ARM7), 8051, Embedded C, Verilog HDL, and Serial Communication Protocols (I2C, SPI, UART, CAN).">
+  <meta name="keywords" content="Bora Vamsi Reddy, Embedded Systems Engineer, ARM7, LPC2148, 8051, Embedded C, Verilog, FPGA, I2C, SPI, UART, CAN, Vector India, ECE, Firmware">
+  <meta name="author" content="Bora Vamsi Reddy">
+
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="Bora Vamsi Reddy — Embedded Systems Engineer">
+  <meta property="og:description" content="Embedded Systems Engineer specializing in LPC2148 (ARM7), 8051, Embedded C, Verilog HDL, and serial communication protocols.">
+  <meta property="og:type" content="website">
+
+  <!-- Fonts & Stylesheet -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=2.5">
+</head>
+<body>
+
+  <!-- ==========================================
+       Header & Navigation
+       ========================================== -->
+  <header class="header" id="header">
+    <div class="container nav-container">
+      <!-- Left: Brand -->
+      <a href="#hero" class="brand" aria-label="Homepage">
+        <span class="brand-text">Hello,</span>
+      </a>
+
+      <!-- Center: Floating Navigation Pill -->
+      <nav class="nav-pill-wrapper" aria-label="Primary Navigation">
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#skills" class="nav-link">Skills</a></li>
+          <li><a href="#projects" class="nav-link">Projects</a></li>
+          <li><a href="#experience" class="nav-link">Experience</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Right: Theme Toggle & Mobile Toggle -->
+      <div class="nav-actions">
+        <button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle dark/light theme">
+          <!-- Sun Icon -->
+          <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <!-- Moon Icon -->
+          <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+
+        <!-- Mobile Drawer Toggle -->
+        <button id="mobileToggle" class="mobile-toggle-btn" aria-label="Open mobile navigation menu" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 20px; height: 20px;">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ==========================================
+         Hero Section
+         ========================================== -->
+    <section class="section hero-section" id="hero">
+      <div class="container hero-container">
+        <div class="hero-main-wrapper">
+          <div class="hero-center-content">
+            <h1 class="hero-title">
+              Hi, I'm <span class="text-gradient">Bora Vamsi Reddy</span>
+            </h1>
+
+            <div class="hero-description">
+              <p>
+                I am an Electronics &amp; Communication Engineer passionate about embedded systems, with a strong focus on register-level programming, protocol timing, and hardware–software co-design.
+              </p>
+              <p>
+                I enjoy working close to the hardware—debugging waveforms, reading datasheets, and understanding why a system behaves the way it does.
+              </p>
+            </div>
+          </div>
+
+          <div class="hero-bottom-controls">
+            <!-- Call to Action Buttons -->
+            <div class="hero-cta-group">
+              <a href="#projects" class="btn btn-primary">
+                <span>View Projects</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 16px; height: 16px;">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </a>
+              <a href="#contact" class="btn btn-secondary">
+                <span>Get In Touch</span>
+              </a>
+              <a href="Vamsi_CV.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" id="resumeBtn" download="Bora_Vamsi_Reddy_CV.pdf">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 16px; height: 16px;">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="7 10 12 15 17 10"></polyline>
+                  <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                <span>Download CV</span>
+              </a>
+            </div>
+
+            <!-- Social Links Row -->
+            <div class="social-links">
+              <a href="https://github.com/VamsiReddyBora" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub Profile">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                </svg>
+              </a>
+              <a href="https://linkedin.com/in/bora-vamsi-reddy" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn Profile">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                  <rect x="2" y="9" width="4" height="12"></rect>
+                  <circle cx="4" cy="4" r="2"></circle>
+                </svg>
+              </a>
+              <a href="tel:+918688869780" class="social-link" aria-label="Call +91 86888 69780">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+              </a>
+              <a href="https://wa.me/918688869780" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Chat on WhatsApp">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                </svg>
+              </a>
+              <a href="mailto:vamsireddy2534@gmail.com" class="social-link" aria-label="Send an Email">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Metrics Strip -->
+        <div class="stats-strip">
+          <div class="stat-item">
+            <div class="stat-number">8.42</div>
+            <div class="stat-label">B.Tech CGPA (NSRIT)</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">5+</div>
+            <div class="stat-label">Embedded & FPGA Projects</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">3</div>
+            <div class="stat-label">Internships & Trainings</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">2</div>
+            <div class="stat-label">NPTEL Elite Certifications</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         About & Skills Section
+         ========================================== -->
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">About Me</span>
+          <h2 class="section-title">Hardware-Software Co-Design & Embedded Engineering</h2>
+          <p class="section-subtitle">
+            Engineering reliable firmware, low-level drivers, and digital logic with robust technical foundations.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <!-- Bio Card -->
+          <div class="about-card">
+            <h3 class="about-heading">Firmware & Low-Level Systems</h3>
+            <p class="about-text">
+              I am an Electronics & Communication Engineering graduate and trained Embedded Systems Engineer from Vector India Institute, Hyderabad. I specialize in bare-metal Embedded C programming, ARM Core architectures, register configuration, and serial communication protocols.
+            </p>
+            <p class="about-text">
+              My hands-on experience ranges from developing interrupt-driven real-time controllers on the LPC2148 (ARM7) and 8051 to synthesizing custom serial bus masters (I2C, SPI) in Verilog HDL on Edge Artix 7 FPGAs, along with optical fiber telecommunications experience at BSNL.
+            </p>
+
+            <div class="quick-details">
+              <div class="detail-item">
+                <span class="detail-label">Full Name</span>
+                <span class="detail-value">Bora Vamsi Reddy</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">Education</span>
+                <span class="detail-value">B. Tech in ECE (8.42 CGPA)</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">Specialization</span>
+                <span class="detail-value">Embedded Systems & IoT</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">Institute</span>
+                <span class="detail-value">Vector India, Hyderabad</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">Direct Email</span>
+                <a href="mailto:vamsireddy2534@gmail.com" class="detail-value" style="color: var(--accent); text-decoration: none;">vamsireddy2534@gmail.com</a>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">Contact Number</span>
+                <a href="tel:+918688869780" class="detail-value" style="color: var(--accent); text-decoration: none;">+91 86888 69780</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Skills Categories -->
+          <div class="skills-column" id="skills">
+            <!-- Category 1: Languages & Low-Level -->
+            <div class="skill-category-card">
+              <h3 class="skill-category-title">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="16 18 22 12 16 6"></polyline>
+                  <polyline points="8 6 2 12 8 18"></polyline>
+                </svg>
+                Programming & Low-Level
+              </h3>
+              <div class="skills-tags">
+                <span class="skill-tag">Embedded C</span>
+                <span class="skill-tag">C Language</span>
+                <span class="skill-tag">8051 Assembly</span>
+                <span class="skill-tag">Verilog HDL</span>
+                <span class="skill-tag">Linux Fundamentals</span>
+                <span class="skill-tag">Pointers & Memory</span>
+                <span class="skill-tag">Peripheral Interfacing</span>
+              </div>
+            </div>
+
+            <!-- Category 2: Microcontrollers & FPGA -->
+            <div class="skill-category-card">
+              <h3 class="skill-category-title">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect>
+                  <rect x="9" y="9" width="6" height="6"></rect>
+                  <line x1="9" y1="1" x2="9" y2="4"></line>
+                  <line x1="15" y1="1" x2="15" y2="4"></line>
+                  <line x1="9" y1="20" x2="9" y2="23"></line>
+                  <line x1="15" y1="20" x2="15" y2="23"></line>
+                  <line x1="20" y1="9" x2="23" y2="9"></line>
+                  <line x1="20" y1="14" x2="23" y2="14"></line>
+                  <line x1="1" y1="9" x2="4" y2="9"></line>
+                  <line x1="1" y1="14" x2="4" y2="14"></line>
+                </svg>
+                Microcontrollers & FPGA
+              </h3>
+              <div class="skills-tags">
+                <span class="skill-tag">LPC2148 (ARM7)</span>
+                <span class="skill-tag">LPC2129</span>
+                <span class="skill-tag">8051 Family (AT89C51)</span>
+                <span class="skill-tag">Edge Artix 7 FPGA</span>
+                <span class="skill-tag">Arduino Microcontrollers</span>
+                <span class="skill-tag">ARM Core Architecture</span>
+              </div>
+            </div>
+
+            <!-- Category 3: Protocols & Subsystems -->
+            <div class="skill-category-card">
+              <h3 class="skill-category-title">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                </svg>
+                Protocols & Hardware Subsystems
+              </h3>
+              <div class="skills-tags">
+                <span class="skill-tag">UART</span>
+                <span class="skill-tag">I²C Protocol</span>
+                <span class="skill-tag">SPI Protocol</span>
+                <span class="skill-tag">CAN 2.0 (Theoretical)</span>
+                <span class="skill-tag">IRQ & FIQ Handling</span>
+                <span class="skill-tag">Internal RTC</span>
+                <span class="skill-tag">SPI EEPROM</span>
+                <span class="skill-tag">RFID (EM-18)</span>
+                <span class="skill-tag">ADC & DAC</span>
+                <span class="skill-tag">LCD Interfacing</span>
+              </div>
+            </div>
+
+            <!-- Category 4: Tooling & Simulators -->
+            <div class="skill-category-card">
+              <h3 class="skill-category-title">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+                </svg>
+                Tools, Simulators & Testing
+              </h3>
+              <div class="skills-tags">
+                <span class="skill-tag">Keil µVision</span>
+                <span class="skill-tag">Proteus VSM</span>
+                <span class="skill-tag">Wokwi Simulator</span>
+                <span class="skill-tag">Tinkercad</span>
+                <span class="skill-tag">Git & GitHub</span>
+                <span class="skill-tag">Optical Fiber Splicing & Fusion</span>
+                <span class="skill-tag">Sensors (Ultrasonic, IR)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         Featured Projects Section
+         ========================================== -->
+    <section class="section" id="projects">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Featured Work</span>
+          <h2 class="section-title">Embedded & Digital Design Projects</h2>
+          <p class="section-subtitle">
+            Hands-on implementations in ARM microcontroller firmware, Verilog FPGA protocols, and optical communication.
+          </p>
+        </div>
+
+        <!-- Category Filters -->
+        <div class="project-filters">
+          <button class="filter-btn active" data-filter="all">All Projects</button>
+          <button class="filter-btn" data-filter="arm">ARM7 & Microcontrollers</button>
+          <button class="filter-btn" data-filter="fpga">FPGA & Verilog</button>
+          <button class="filter-btn" data-filter="hardware">Optical & Hardware</button>
+        </div>
+
+        <!-- Projects Grid -->
+        <div class="projects-grid">
+          <!-- Project 1: Attendify-RFID -->
+          <article class="project-card" data-category="arm">
+            <div class="project-banner">
+              <div class="project-banner-pattern"></div>
+              <span class="project-badge">ARM7 LPC2148</span>
+              <div class="project-icon-wrapper">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="4" width="18" height="16" rx="2"></rect>
+                  <circle cx="9" cy="10" r="2"></circle>
+                  <line x1="15" y1="8" x2="17" y2="8"></line>
+                  <line x1="15" y1="12" x2="17" y2="12"></line>
+                  <line x1="7" y1="16" x2="17" y2="16"></line>
+                </svg>
+              </div>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">Attendify-RFID: Smart Employee Tracking & Reporting</h3>
+              <p class="project-desc">
+                Implemented an RFID-based employee attendance logging and access system using the LPC2148 (ARM7) microcontroller. Integrated an SPI-based EEPROM to store administrative authorization IDs locally for offline validation. Established dual-channel UART communication (UART1 for RFID reader decoding and UART0 for PC-side file-based employee record management).
+              </p>
+              <div class="project-tech">
+                <span class="tech-pill">LPC2148 (ARM7)</span>
+                <span class="tech-pill">Embedded C</span>
+                <span class="tech-pill">RFID (EM-18)</span>
+                <span class="tech-pill">SPI EEPROM</span>
+                <span class="tech-pill">UART Protocol</span>
+                <span class="tech-pill">Keil µVision</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/VamsiReddyBora" target="_blank" rel="noopener noreferrer" class="project-link-btn">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                  </svg>
+                  <span>View Repository</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 2: PowerChrono -->
+          <article class="project-card" data-category="arm">
+            <div class="project-banner">
+              <div class="project-banner-pattern"></div>
+              <span class="project-badge">ARM7 RTC & Interrupts</span>
+              <div class="project-icon-wrapper">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+              </div>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">PowerChrono: Time-Driven Energy Automation</h3>
+              <p class="project-desc">
+                Engineered an automated time-scheduled appliance power management controller using LPC2148 (ARM7). Configured the on-chip Real-Time Clock (RTC) for precise timing intervals and deployed FIQ/IRQ interrupt routines for priority-driven multi-load sequencing. Displayed live system status on a 16x2 LCD interface with manual override pushbuttons.
+              </p>
+              <div class="project-tech">
+                <span class="tech-pill">LPC2148 (ARM7)</span>
+                <span class="tech-pill">Embedded C</span>
+                <span class="tech-pill">On-Chip RTC</span>
+                <span class="tech-pill">FIQ/IRQ Interrupts</span>
+                <span class="tech-pill">16x2 LCD</span>
+                <span class="tech-pill">Relay Automation</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/VamsiReddyBora" target="_blank" rel="noopener noreferrer" class="project-link-btn">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                  </svg>
+                  <span>View Repository</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 3: Li-Fi Audio & Data Transfer -->
+          <article class="project-card" data-category="hardware">
+            <div class="project-banner">
+              <div class="project-banner-pattern"></div>
+              <span class="project-badge">Optical Wireless</span>
+              <div class="project-icon-wrapper">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="5"></circle>
+                  <line x1="12" y1="1" x2="12" y2="3"></line>
+                  <line x1="12" y1="21" x2="12" y2="23"></line>
+                  <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                  <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                  <line x1="1" y1="12" x2="3" y2="12"></line>
+                  <line x1="21" y1="12" x2="23" y2="12"></line>
+                  <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                  <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+              </div>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">Audio & Data Transfer using Light Fidelity (Li-Fi)</h3>
+              <p class="project-desc">
+                Designed and deployed a high-speed wireless optical transmission system using the visible light spectrum for concurrent audio streaming and digital data packets. Implemented transmitter LED driver modulation circuits and high-sensitivity photodetector receiver stages with operational amplification for noise-free, electromagnetic-interference-resistant communication.
+              </p>
+              <div class="project-tech">
+                <span class="tech-pill">Optical Wireless</span>
+                <span class="tech-pill">Li-Fi Transceiver</span>
+                <span class="tech-pill">Analog Modulation</span>
+                <span class="tech-pill">Photodetectors</span>
+                <span class="tech-pill">Signal Amplification</span>
+                <span class="tech-pill">Hardware Prototype</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/VamsiReddyBora" target="_blank" rel="noopener noreferrer" class="project-link-btn">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                  </svg>
+                  <span>View Repository</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 4: I2C Master Controller FPGA -->
+          <article class="project-card" data-category="fpga">
+            <div class="project-banner">
+              <div class="project-banner-pattern"></div>
+              <span class="project-badge">Artix-7 FPGA</span>
+              <div class="project-icon-wrapper">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="4" y="4" width="16" height="16" rx="2"></rect>
+                  <rect x="9" y="9" width="6" height="6"></rect>
+                  <line x1="9" y1="1" x2="9" y2="4"></line>
+                  <line x1="15" y1="1" x2="15" y2="4"></line>
+                  <line x1="9" y1="20" x2="9" y2="23"></line>
+                  <line x1="15" y1="20" x2="15" y2="23"></line>
+                  <line x1="20" y1="9" x2="23" y2="9"></line>
+                  <line x1="20" y1="14" x2="23" y2="14"></line>
+                  <line x1="1" y1="9" x2="4" y2="9"></line>
+                  <line x1="1" y1="14" x2="4" y2="14"></line>
+                </svg>
+              </div>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">I2C Protocol Master Controller using Edge Artix 7 FPGA</h3>
+              <p class="project-desc">
+                Synthesized and validated an industry-standard I2C Master Controller IP core in Verilog HDL targeted for the Edge Artix-7 FPGA development board. Developed robust Finite State Machines (FSM) for START/STOP sequence generation, 7-bit slave address framing, ACK/NACK bus verification, and bidirectional SDA tri-state synchronization.
+              </p>
+              <div class="project-tech">
+                <span class="tech-pill">Verilog HDL</span>
+                <span class="tech-pill">Edge Artix-7 FPGA</span>
+                <span class="tech-pill">I2C Protocol</span>
+                <span class="tech-pill">FSM Architecture</span>
+                <span class="tech-pill">Xilinx Vivado</span>
+                <span class="tech-pill">RTL Simulation</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/VamsiReddyBora" target="_blank" rel="noopener noreferrer" class="project-link-btn">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                  </svg>
+                  <span>View Repository</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 5: SPI DAC Interface FPGA -->
+          <article class="project-card" data-category="fpga">
+            <div class="project-banner">
+              <div class="project-banner-pattern"></div>
+              <span class="project-badge">Verilog & DAC</span>
+              <div class="project-icon-wrapper">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M2 12h5l3-9 4 18 3-9h5"></path>
+                </svg>
+              </div>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">SPI DAC Interface using Edge Artix 7 FPGA</h3>
+              <p class="project-desc">
+                Developed a high-speed Serial Peripheral Interface (SPI) master core in Verilog HDL deployed on the Edge Artix 7 FPGA board. Successfully interfaced with an external Digital-to-Analog Converter (DAC) to generate precise analog output waveforms (sine, triangular, sawtooth) with verified timing diagrams, frequency division, and low-latency serial data transfer.
+              </p>
+              <div class="project-tech">
+                <span class="tech-pill">Verilog HDL</span>
+                <span class="tech-pill">Artix-7 FPGA</span>
+                <span class="tech-pill">SPI Protocol</span>
+                <span class="tech-pill">DAC Interfacing</span>
+                <span class="tech-pill">Waveform Generation</span>
+                <span class="tech-pill">Digital Logic</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/VamsiReddyBora" target="_blank" rel="noopener noreferrer" class="project-link-btn">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                  </svg>
+                  <span>View Repository</span>
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         Experience & Timeline Section
+         ========================================== -->
+    <section class="section" id="experience">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Career & Education</span>
+          <h2 class="section-title">Experience, Training & Education</h2>
+          <p class="section-subtitle">
+            A journey through hands-on embedded systems training, telecommunications field internships, and high-performance electronics engineering academics.
+          </p>
+        </div>
+
+        <div class="timeline">
+          <!-- Timeline Item 1: Vector India -->
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-header">
+                <h3 class="timeline-role">Embedded Systems Trainee</h3>
+                <span class="timeline-period">June 2025 — Jan 2026</span>
+              </div>
+              <div class="timeline-company">Vector India Institute • Hyderabad, Telangana</div>
+              <p class="timeline-description">
+                Rigorous 6-month hands-on professional certification and practical embedded engineering training program.
+              </p>
+              <ul class="timeline-bullets">
+                <li>Mastered Embedded C programming, advanced pointer manipulation, data structures, bitwise arithmetic, and microcontroller memory architectures.</li>
+                <li>Engineered low-level firmware for LPC2148 / LPC2129 (ARM7) and AT89C51 (8051) interfacing GPIO, Timers, PWM, ADC, and nested IRQ/FIQ interrupts.</li>
+                <li>Developed custom device drivers and communication protocol handlers for UART, SPI, I2C, and CAN 2.0 industrial standards.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Timeline Item 2: BSNL -->
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-header">
+                <h3 class="timeline-role">Telecommunications & Optical Fiber Intern</h3>
+                <span class="timeline-period">May 2024 — Nov 2024</span>
+              </div>
+              <div class="timeline-company">Bharat Sanchar Nigam Limited (BSNL) • Visakhapatnam, AP</div>
+              <p class="timeline-description">
+                Six-month intensive technical internship covering optical fiber telecommunication infrastructure and telephone exchange switching operations.
+              </p>
+              <ul class="timeline-bullets">
+                <li>Studied telephone exchange switching hierarchies, digital carrier transmission, and PSTN/NGN telecommunication network architecture.</li>
+                <li>Performed optical fiber cable (OFC) route surveying, precision fusion splicing, optical power loss measurement, and OTDR fault localization.</li>
+                <li>Analyzed broadband and FTTH (Fiber to the Home) customer loop distribution points, optical splitters, and signal attenuation troubleshooting.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Timeline Item 3: HMI Engineering Services -->
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-header">
+                <h3 class="timeline-role">Embedded Systems & IoT Intern</h3>
+                <span class="timeline-period">June 2023 — July 2023</span>
+              </div>
+              <div class="timeline-company">HMI Engineering Services • Visakhapatnam, AP</div>
+              <p class="timeline-description">
+                Practical engineering internship focused on IoT embedded systems design, sensor integration, and rapid hardware prototyping.
+              </p>
+              <ul class="timeline-bullets">
+                <li>Programmed microcontrollers (Arduino/C) for telemetry, automated sensor data acquisition, and real-time environment monitoring.</li>
+                <li>Interfaced digital and analog sensors (ultrasonic, temperature, IR, motion) with automated relay actuator control systems.</li>
+                <li>Designed, tested, and validated embedded circuit schematics using Proteus VSM and Tinkercad simulators prior to hardware assembly.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Timeline Item 4: NSRIT B.Tech -->
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-header">
+                <h3 class="timeline-role">B. Tech in Electronics & Communication Engineering</h3>
+                <span class="timeline-period">2022 — 2025</span>
+              </div>
+              <div class="timeline-company">Nadimpalli Satyanarayana Raju Institute of Technology (NSRIT) • CGPA: 8.42 / 10</div>
+              <p class="timeline-description">
+                Graduated with First Class with Distinction. Focused on embedded firmware, digital hardware synthesis, and microelectronics.
+              </p>
+              <ul class="timeline-bullets">
+                <li>Core Coursework: Embedded Systems Design, Microprocessors & Microcontrollers, VLSI Design, Digital Signal Processing, Analog & Digital Communications, Computer Networks.</li>
+                <li>Led undergraduate capstone projects including Li-Fi Optical Wireless Communication and ARM7 automation.</li>
+                <li>Maintained an outstanding academic record of 8.42 CGPA throughout the degree.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Timeline Item 5: Govt. Polytechnic Chodavaram -->
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-header">
+                <h3 class="timeline-role">Diploma in Electronics & Communication Engineering</h3>
+                <span class="timeline-period">2019 — 2022</span>
+              </div>
+              <div class="timeline-company">Government Polytechnic, Chodavaram (SBTET AP) • CGPA: 8.0 / 10</div>
+              <p class="timeline-description">
+                3-Year technical diploma graduated with First Class with Distinction. Built foundational expertise in circuits and digital logic.
+              </p>
+              <ul class="timeline-bullets">
+                <li>Comprehensive hands-on curriculum in electronic circuits, digital logic design, 8051 assembly/C programming, and linear integrated circuits.</li>
+                <li>Built laboratory demonstration prototypes for power supplies, analog modulation circuits, and microcontroller timers.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Certifications & Accreditations Subsection -->
+        <div class="certifications-section">
+          <div class="certifications-heading">
+            <span class="section-tag">Accreditations</span>
+            <h3 class="section-title">Certifications & Specialized Training</h3>
+            <p class="section-subtitle">
+              Nationally recognized technical certifications and verified industry-standard credentials.
+            </p>
+          </div>
+
+          <div class="certifications-grid">
+            <!-- Certification 1: NPTEL ESD -->
+            <div class="certification-card">
+              <div class="cert-header">
+                <div class="cert-icon-wrapper">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="8" r="7"></circle>
+                    <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
+                  </svg>
+                </div>
+                <div class="cert-score-badge">75% Score</div>
+              </div>
+              <h4 class="cert-title">Embedded Systems Design (ESD)</h4>
+              <div class="cert-issuer">NPTEL • Ministry of Education / IIT</div>
+              <p class="cert-desc">
+                Comprehensive certification covering embedded system architecture, real-time operating concepts, hardware-software co-design, bus protocols, and low-power microcontroller optimization.
+              </p>
+              <div class="cert-footer">
+                <span class="cert-tag">Elite Certified</span>
+                <span class="cert-tag">IIT / NPTEL</span>
+              </div>
+            </div>
+
+            <!-- Certification 2: NPTEL IoT -->
+            <div class="certification-card">
+              <div class="cert-header">
+                <div class="cert-icon-wrapper">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M5 12.55a11 11 0 0 1 14.08 0"></path>
+                    <path d="M1.42 9a16 16 0 0 1 21.16 0"></path>
+                    <path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path>
+                    <line x1="12" y1="20" x2="12.01" y2="20"></line>
+                  </svg>
+                </div>
+                <div class="cert-score-badge">79% Score</div>
+              </div>
+              <h4 class="cert-title">An Introduction to Internet of Things (IoT)</h4>
+              <div class="cert-issuer">NPTEL • Ministry of Education / IIT</div>
+              <p class="cert-desc">
+                Rigorous evaluation on wireless sensor networks (WSN), IoT reference architectures, connectivity protocols (MQTT, CoAP), cloud telemetry, edge computing, and smart sensors.
+              </p>
+              <div class="cert-footer">
+                <span class="cert-tag">Elite Certified</span>
+                <span class="cert-tag">IIT / NPTEL</span>
+              </div>
+            </div>
+
+            <!-- Certification 3: Pantech FPGA -->
+            <div class="certification-card">
+              <div class="cert-header">
+                <div class="cert-icon-wrapper">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="4" y="4" width="16" height="16" rx="2"></rect>
+                    <rect x="9" y="9" width="6" height="6"></rect>
+                    <line x1="9" y1="1" x2="9" y2="4"></line>
+                    <line x1="15" y1="1" x2="15" y2="4"></line>
+                    <line x1="9" y1="20" x2="9" y2="23"></line>
+                    <line x1="15" y1="20" x2="15" y2="23"></line>
+                    <line x1="20" y1="9" x2="23" y2="9"></line>
+                    <line x1="20" y1="14" x2="23" y2="14"></line>
+                    <line x1="1" y1="9" x2="4" y2="9"></line>
+                    <line x1="1" y1="14" x2="4" y2="14"></line>
+                  </svg>
+                </div>
+                <div class="cert-score-badge">30-Day Internship</div>
+              </div>
+              <h4 class="cert-title">FPGA Design Internship & Certification</h4>
+              <div class="cert-issuer">Pantech Solutions • Pantech ProLabs</div>
+              <p class="cert-desc">
+                Practical 30-day intensive curriculum in Verilog HDL programming, digital logic architecture, RTL simulation, timing analysis, and FPGA deployment on Xilinx Artix-7 boards.
+              </p>
+              <div class="cert-footer">
+                <span class="cert-tag">Digital Design</span>
+                <span class="cert-tag">Verilog & FPGA</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         Contact & Connect Section
+         ========================================== -->
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Get In Touch</span>
+          <h2 class="section-title">Let's build something remarkable</h2>
+          <p class="section-subtitle">
+            Have a project in mind, looking to hire, or just want to discuss technology? Drop me a line!
+          </p>
+        </div>
+
+        <div class="contact-wrapper">
+          <!-- Contact Info Card -->
+          <div class="contact-info-card">
+            <h3 class="contact-info-title">Contact Channels</h3>
+            <p class="contact-info-desc">
+              I'm always eager to collaborate on intriguing ideas, contract engagements, or full-time opportunities.
+            </p>
+
+            <div class="contact-methods">
+              <!-- Method 1: Email -->
+              <div class="contact-method-item">
+                <div class="contact-method-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                  </svg>
+                </div>
+                <div class="contact-method-body">
+                  <div class="contact-method-label">Direct Email</div>
+                  <a href="mailto:vamsireddy2534@gmail.com" class="contact-method-value">vamsireddy2534@gmail.com</a>
+                  <div class="contact-action-row">
+                    <button type="button" class="copy-email-btn" id="copyEmailBtn" data-email="vamsireddy2534@gmail.com">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                      <span>Copy email</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Method 2: Phone / WhatsApp -->
+              <div class="contact-method-item">
+                <div class="contact-method-icon phone-icon-wrapper">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                  </svg>
+                </div>
+                <div class="contact-method-body">
+                  <div class="contact-method-label">Phone & WhatsApp</div>
+                  <a href="tel:+918688869780" class="contact-method-value">+91 86888 69780</a>
+                  <div class="contact-action-row">
+                    <button type="button" class="copy-email-btn" id="copyPhoneBtn" data-phone="8688869780">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                      <span>Copy number</span>
+                    </button>
+                    <a href="https://wa.me/918688869780" target="_blank" rel="noopener noreferrer" class="contact-inline-link">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                      </svg>
+                      <span>WhatsApp</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Method 3: Response Guarantee -->
+              <div class="contact-method-item">
+                <div class="contact-method-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                  </svg>
+                </div>
+                <div class="contact-method-body">
+                  <div class="contact-method-label">Response Time</div>
+                  <div class="contact-method-value">Within 24 business hours</div>
+                  <div class="status-indicator-sub">Fast email & call turnaround</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact Form Card -->
+          <div class="contact-form-card">
+            <form id="contactForm" action="https://formsubmit.co/ajax/vamsireddy2534@gmail.com" method="POST" novalidate>
+              <!-- Hidden FormSubmit settings -->
+              <input type="hidden" name="_captcha" value="false">
+              <input type="hidden" name="_template" value="table">
+              <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+
+              <div class="form-grid">
+                <div class="form-group">
+                  <label for="name" class="form-label">Your Name</label>
+                  <input type="text" id="name" name="name" class="form-input" placeholder="e.g. Alex Turner" required autocomplete="name">
+                </div>
+                <div class="form-group">
+                  <label for="email" class="form-label">Email Address</label>
+                  <input type="email" id="email" name="email" class="form-input" placeholder="e.g. alex@example.com" required autocomplete="email">
+                </div>
+                <div class="form-group full-width">
+                  <label for="subject" class="form-label">Subject</label>
+                  <input type="text" id="subject" name="subject" class="form-input" placeholder="Project Inquiry / Opportunity" required>
+                </div>
+                <div class="form-group full-width">
+                  <label for="message" class="form-label">Message</label>
+                  <textarea id="message" name="message" class="form-textarea" placeholder="Describe your project, timeline, or inquiry..." required></textarea>
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn-primary" style="width: 100%;">
+                <span>Send Message</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 16px; height: 16px;">
+                  <line x1="22" y1="2" x2="11" y2="13"></line>
+                  <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==========================================
+       Footer (Sleek, Modern & Glassmorphic)
+       ========================================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Brand & Bio Column -->
+        <div class="footer-col footer-col-brand">
+          <a href="#hero" class="brand footer-brand" aria-label="Homepage">
+            <span class="brand-badge">VR</span>
+            <span class="brand-text">Vamsi Reddy Bora</span>
+          </a>
+          <p class="footer-bio">
+            Embedded Systems Engineer specializing in ARM7 (LPC2148) firmware, 8051 microcontrollers, Verilog HDL FPGA design, and industrial protocols (UART, SPI, I2C, CAN). Dedicated to writing reliable, hardware-optimized C code.
+          </p>
+        </div>
+
+        <!-- Quick Navigation Column -->
+        <div class="footer-col footer-col-nav">
+          <h4 class="footer-col-title">Navigation</h4>
+          <ul class="footer-nav-list">
+            <li><a href="#hero" class="footer-nav-link">Home</a></li>
+            <li><a href="#about" class="footer-nav-link">About Me</a></li>
+            <li><a href="#skills" class="footer-nav-link">Core Skills</a></li>
+            <li><a href="#projects" class="footer-nav-link">Featured Projects</a></li>
+            <li><a href="#experience" class="footer-nav-link">Experience</a></li>
+            <li><a href="#contact" class="footer-nav-link">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Direct Connect & Social Column -->
+        <div class="footer-col footer-col-connect">
+          <h4 class="footer-col-title">Direct Connect</h4>
+          <div class="footer-contact-items">
+            <a href="mailto:vamsireddy2534@gmail.com" class="footer-contact-pill" title="Send Email">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+              <span>vamsireddy2534@gmail.com</span>
+            </a>
+            <a href="tel:+918688869780" class="footer-contact-pill" title="Call directly">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+              <span>+91 86888 69780</span>
+            </a>
+          </div>
+
+          <div class="footer-socials">
+            <a href="https://github.com/VamsiReddyBora" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="GitHub Profile">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+              </svg>
+            </a>
+            <a href="https://linkedin.com/in/bora-vamsi-reddy" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="LinkedIn Profile">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+            </a>
+            <a href="https://wa.me/918688869780" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="Chat on WhatsApp">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+              </svg>
+            </a>
+            <a href="mailto:vamsireddy2534@gmail.com" class="footer-social-btn" aria-label="Send Email">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-copyright">
+          © 2026 <strong>Vamsi Reddy Bora</strong>. All rights reserved.
+        </div>
+        <div class="footer-badge">
+          Pure HTML5 • Modern CSS • Vanilla JS
+        </div>
+        <a href="#hero" class="back-to-top-btn" id="backToTopBtn" aria-label="Scroll back to top">
+          <span>Back to Top</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="19" x2="12" y2="5"></line>
+            <polyline points="5 12 12 5 19 12"></polyline>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+</body>
+</html>
