@@ -46,7 +46,6 @@ document.addEventListener('DOMContentLoaded', () => {
       const currentTheme = htmlElement.getAttribute('data-theme') || 'dark';
       const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
       setTheme(newTheme);
-      showToast(`Switched to ${newTheme} mode`);
     });
   }
 
@@ -159,56 +158,57 @@ document.addEventListener('DOMContentLoaded', () => {
   sections.forEach((section) => sectionObserver.observe(section));
 
   /* ==========================================
-     5. Edge-to-Edge Slide-In & Slide-Out Scroll Animations (Silky Smooth)
+     5. Card Slide-In Animation
+        Cards slide up and fade in on scroll.
      ========================================== */
   const elementsToAnimate = [
-    ...document.querySelectorAll('.project-card'),
+    document.querySelector('.stats-strip'),
+    document.querySelector('.about-card'),
     ...document.querySelectorAll('.skill-category-card'),
+    ...document.querySelectorAll('.project-card'),
     ...document.querySelectorAll('.timeline-content'),
     ...document.querySelectorAll('.certification-card'),
-    ...document.querySelectorAll('.stat-item'),
-    document.querySelector('.about-card'),
     document.querySelector('.contact-info-card'),
     document.querySelector('.contact-form-card')
   ].filter(Boolean);
 
-  // Assign alternating edge directions and wave delays
-  elementsToAnimate.forEach((el, index) => {
-    if (el.classList.contains('contact-info-card') || el.classList.contains('about-card')) {
-      el.classList.add('slide-edge-left');
-      el.dataset.delay = '0ms';
-    } else if (el.classList.contains('contact-form-card') || el.classList.contains('skills-column')) {
-      el.classList.add('slide-edge-right');
-      el.dataset.delay = '80ms';
-    } else {
-      el.classList.add(index % 2 === 0 ? 'slide-edge-left' : 'slide-edge-right');
-      el.dataset.delay = `${(index % 4) * 65}ms`;
+  // Clean up any legacy wrapper elements from carpet-roll system
+  document.querySelectorAll('.yoga-roller, .carpet-roll-segments').forEach((el) => el.remove());
+  document.querySelectorAll('.carpet-roll-wrapper').forEach((wrapper) => {
+    const target = wrapper.querySelector('.carpet-roll-target');
+    if (target) {
+      target.classList.remove('carpet-roll-target');
+      target.style.visibility = '';
+      wrapper.parentNode.insertBefore(target, wrapper);
     }
-    el.style.transitionDelay = el.dataset.delay;
+    wrapper.remove();
   });
 
-  const edgeObserver = new IntersectionObserver((entries) => {
+  // Apply slide-card class and staggered delays
+  elementsToAnimate.forEach((card, index) => {
+    card.classList.add('slide-card');
+    card.classList.remove('carpet-fold-card', 'carpet-fold-left', 'carpet-fold-right', 'yoga-mat-card');
+    card.style.transitionDelay = `${(index % 4) * 80}ms`;
+  });
+
+  const slideObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        // Restore wave stagger delay on enter
-        entry.target.style.transitionDelay = entry.target.dataset.delay || '0ms';
         entry.target.classList.add('in-view');
       } else {
-        // Smooth retreat on exit without waiting for delays
-        entry.target.style.transitionDelay = '0ms';
         entry.target.classList.remove('in-view');
       }
     });
   }, {
     root: null,
-    threshold: 0.05,
+    threshold: 0.08,
     rootMargin: '0px 0px -40px 0px'
   });
 
-  elementsToAnimate.forEach((el) => edgeObserver.observe(el));
+  elementsToAnimate.forEach((el) => slideObserver.observe(el));
 
   /* ==========================================
-     6. Project Filtering with Edge Slide Dynamics
+     6. Project Filtering
      ========================================== */
   filterBtns.forEach((btn) => {
     btn.addEventListener('click', () => {
@@ -222,43 +222,41 @@ document.addEventListener('DOMContentLoaded', () => {
         const shouldShow = (filterValue === 'all' || category === filterValue);
 
         if (!shouldShow) {
-          // Slide out to edges
-          card.classList.add('filter-leaving');
           card.classList.remove('in-view');
           setTimeout(() => {
             card.classList.add('hidden');
-            card.classList.remove('filter-leaving');
-          }, 260);
+          }, 350);
         } else {
           card.classList.remove('hidden');
-          card.classList.add('filter-entering');
           setTimeout(() => {
-            card.classList.remove('filter-entering');
             card.classList.add('in-view');
-          }, 40 + idx * 30);
+          }, 40 + idx * 50);
         }
       });
     });
   });
 
   /* ==========================================
-     6. Copy Contact Details to Clipboard
+     6. Copy Contact Details to Clipboard (Inline Feedback, No Popups)
      ========================================== */
   if (copyEmailBtn) {
     copyEmailBtn.addEventListener('click', async () => {
       const email = copyEmailBtn.getAttribute('data-email') || 'vamsireddy2534@gmail.com';
       try {
         await navigator.clipboard.writeText(email);
-        showToast('Email copied to clipboard!');
       } catch (err) {
-        // Fallback for older browsers
         const textarea = document.createElement('textarea');
         textarea.value = email;
         document.body.appendChild(textarea);
         textarea.select();
         document.execCommand('copy');
         document.body.removeChild(textarea);
-        showToast('Email copied to clipboard!');
+      }
+      const labelSpan = copyEmailBtn.querySelector('span');
+      if (labelSpan) {
+        const orig = labelSpan.textContent;
+        labelSpan.textContent = 'Copied!';
+        setTimeout(() => { labelSpan.textContent = orig; }, 1800);
       }
     });
   }
@@ -268,7 +266,6 @@ document.addEventListener('DOMContentLoaded', () => {
       const phone = copyPhoneBtn.getAttribute('data-phone') || '8688869780';
       try {
         await navigator.clipboard.writeText(phone);
-        showToast('Phone number copied to clipboard!');
       } catch (err) {
         const textarea = document.createElement('textarea');
         textarea.value = phone;
@@ -276,7 +273,6 @@ document.addEventListener('DOMContentLoaded', () => {
         textarea.select();
         document.execCommand('copy');
         document.body.removeChild(textarea);
-        showToast('Phone number copied to clipboard!');
       }
     });
   }
@@ -314,13 +310,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Validation
       if (!name || !email || !message) {
-        showToast('Please fill in your name, email, and message.', 3500, 'error');
         return;
       }
 
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRegex.test(email)) {
-        showToast('Please enter a valid email address.', 3500, 'error');
         emailInput?.focus();
         return;
       }
@@ -330,7 +324,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // Provide responsive sending feedback
       submitBtn.disabled = true;
       submitBtn.innerHTML = `
-        <svg class="spin" style="width:16px;height:16px;animation:spin 1s linear infinite" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <svg class="spin" style="width:15px;height:15px;animation:spin 1s linear infinite" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <circle cx="12" cy="12" r="10" stroke-opacity="0.25"></circle>
           <path d="M12 2a10 10 0 0 1 10 10" stroke-linecap="round"></path>
         </svg>
@@ -359,17 +353,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const data = await response.json();
 
-        if (response.ok && (data.success === 'true' || data.success === true)) {
-          contactForm.reset();
-          showToast('Thank you! Your message has been sent directly to Vamsi.', 4500);
-        } else {
-          // If first-time activation is pending or FormSubmit returned info
-          contactForm.reset();
-          showToast('Message submitted! Please note first-time activation may be requested.', 5000);
-        }
+        contactForm.reset();
+        showToast('Message sent!');
       } catch (err) {
         console.error('Submission failed:', err);
-        showToast('Could not send message. Please email directly to vamsireddy2534@gmail.com', 4500, 'error');
+        showToast('Failed to send. Please try again.', 3000, 'error');
       } finally {
         submitBtn.disabled = false;
         submitBtn.innerHTML = originalBtnHTML;
@@ -378,24 +366,26 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ==========================================
-     8. Toast Notification System
+     8. Toast Notification System (Compact & Minimal)
      ========================================== */
-  function showToast(message, duration = 3500, type = 'success') {
+  function showToast(message, duration = 2600, type = 'success') {
     if (!toastContainer) return;
+
+    // Remove any previous toast for clean single display
+    toastContainer.innerHTML = '';
 
     const toast = document.createElement('div');
     toast.className = `toast ${type === 'error' ? 'toast-error' : ''}`;
     toast.setAttribute('role', 'alert');
 
     const iconSvg = type === 'error'
-      ? `<svg class="toast-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      ? `<svg class="toast-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;flex-shrink:0;">
            <circle cx="12" cy="12" r="10"></circle>
            <line x1="12" y1="8" x2="12" y2="12"></line>
            <line x1="12" y1="16" x2="12.01" y2="16"></line>
          </svg>`
-      : `<svg class="toast-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-           <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-           <polyline points="22 4 12 14.01 9 11.01"></polyline>
+      : `<svg class="toast-icon" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;flex-shrink:0;">
+           <polyline points="20 6 9 17 4 12"></polyline>
          </svg>`;
 
     toast.innerHTML = `
@@ -417,7 +407,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (toast.parentNode === toastContainer) {
           toastContainer.removeChild(toast);
         }
-      }, 300);
+      }, 250);
     }, duration);
   }
 });
