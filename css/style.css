@@ -1910,57 +1910,50 @@ a.contact-method-value:hover {
    Cards slide horizontally from the edges into place when scrolling into view,
    and slide back into the edges when leaving view.
    ========================================================================== */
+/* Base Slide Animation Properties */
+.slide-card,
+.slide-edge-left,
+.slide-edge-right {
+  opacity: 0;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color var(--transition-base),
+              box-shadow var(--transition-base);
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Slide in from left edge */
+.slide-card,
 .slide-edge-left,
 .slide-card.slide-from-left {
-  opacity: 0;
   transform: translate3d(-55px, 0, 0) scale3d(0.975, 0.975, 1);
-  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-              opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-              border-color var(--transition-base),
-              box-shadow var(--transition-base);
-  will-change: transform, opacity;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
 }
 
+/* Slide in from right edge */
 .slide-edge-right,
 .slide-card.slide-from-right {
-  opacity: 0;
   transform: translate3d(55px, 0, 0) scale3d(0.975, 0.975, 1);
-  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-              opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-              border-color var(--transition-base),
-              box-shadow var(--transition-base);
-  will-change: transform, opacity;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
 }
 
-/* Fallback for elements with slide-card class */
-.slide-card:not(.slide-edge-right):not(.slide-from-right) {
-  opacity: 0;
-  transform: translate3d(-55px, 0, 0) scale3d(0.975, 0.975, 1);
-  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-              opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-              border-color var(--transition-base),
-              box-shadow var(--transition-base);
-  will-change: transform, opacity;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-}
-
+/* In-View State: Slide to natural position and become fully visible */
+.slide-card.in-view,
 .slide-edge-left.in-view,
 .slide-edge-right.in-view,
-.slide-card.in-view {
-  opacity: 1;
-  transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+.slide-card.slide-from-left.in-view,
+.slide-card.slide-from-right.in-view {
+  opacity: 1 !important;
+  transform: translate3d(0, 0, 0) scale3d(1, 1, 1) !important;
 }
 
 @media (hover: hover) and (pointer: fine) {
+  .slide-card.in-view:hover,
   .slide-edge-left.in-view:hover,
   .slide-edge-right.in-view:hover,
-  .slide-card.in-view:hover {
-    transform: translate3d(0, -6px, 0) scale3d(1.008, 1.008, 1);
+  .slide-card.slide-from-left.in-view:hover,
+  .slide-card.slide-from-right.in-view:hover {
+    transform: translate3d(0, -6px, 0) scale3d(1.008, 1.008, 1) !important;
     border-color: var(--glass-border-hover);
     box-shadow: var(--glass-shadow-hover);
     transition-duration: 0.25s;
@@ -2087,9 +2080,9 @@ a.contact-method-value:hover {
   }
 
   /* Mobile: reduce horizontal slide distance to prevent overflow */
+  .slide-card,
   .slide-edge-left,
-  .slide-card.slide-from-left,
-  .slide-card:not(.slide-edge-right):not(.slide-from-right) {
+  .slide-card.slide-from-left {
     transform: translate3d(-30px, 0, 0) scale3d(0.985, 0.985, 1);
   }
 
@@ -2098,17 +2091,21 @@ a.contact-method-value:hover {
     transform: translate3d(30px, 0, 0) scale3d(0.985, 0.985, 1);
   }
 
+  .slide-card.in-view,
   .slide-edge-left.in-view,
   .slide-edge-right.in-view,
-  .slide-card.in-view {
-    transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+  .slide-card.slide-from-left.in-view,
+  .slide-card.slide-from-right.in-view {
+    transform: translate3d(0, 0, 0) scale3d(1, 1, 1) !important;
   }
 
   /* Mobile: disable hover lift on touch devices */
+  .slide-card.in-view:hover,
   .slide-edge-left.in-view:hover,
   .slide-edge-right.in-view:hover,
-  .slide-card.in-view:hover {
-    transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+  .slide-card.slide-from-left.in-view:hover,
+  .slide-card.slide-from-right.in-view:hover {
+    transform: translate3d(0, 0, 0) scale3d(1, 1, 1) !important;
   }
 }
 
@@ -2143,9 +2140,9 @@ a.contact-method-value:hover {
     font-size: 0.825rem;
   }
 
+  .slide-card,
   .slide-edge-left,
-  .slide-card.slide-from-left,
-  .slide-card:not(.slide-edge-right):not(.slide-from-right) {
+  .slide-card.slide-from-left {
     transform: translate3d(-20px, 0, 0) scale3d(0.99, 0.99, 1);
   }
 

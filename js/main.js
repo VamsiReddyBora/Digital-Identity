@@ -224,17 +224,29 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }, {
     root: null,
-    threshold: 0.05,
-    rootMargin: '0px 0px -30px 0px'
+    threshold: 0.02,
+    rootMargin: '0px'
   });
 
-  elementsToAnimate.forEach((el) => slideObserver.observe(el));
+  elementsToAnimate.forEach((el) => {
+    slideObserver.observe(el);
+    // Ensure cards already inside viewport on page load are immediately visible
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      el.classList.add('in-view');
+    }
+  });
 
   /* ==========================================
      6. Project Filtering with Edge Slide Dynamics
      ========================================== */
+  let filterTimeouts = [];
   filterBtns.forEach((btn) => {
     btn.addEventListener('click', () => {
+      // Clear any pending filter animation timeouts to prevent race conditions
+      filterTimeouts.forEach((t) => clearTimeout(t));
+      filterTimeouts = [];
+
       filterBtns.forEach((b) => b.classList.remove('active'));
       btn.classList.add('active');
 
@@ -248,17 +260,19 @@ document.addEventListener('DOMContentLoaded', () => {
           // Slide out into edges
           card.classList.add('filter-leaving');
           card.classList.remove('in-view');
-          setTimeout(() => {
+          const t1 = setTimeout(() => {
             card.classList.add('hidden');
             card.classList.remove('filter-leaving');
-          }, 350);
+          }, 280);
+          filterTimeouts.push(t1);
         } else {
-          card.classList.remove('hidden');
+          card.classList.remove('hidden', 'filter-leaving');
           card.classList.add('filter-entering');
-          setTimeout(() => {
+          const t2 = setTimeout(() => {
             card.classList.remove('filter-entering');
             card.classList.add('in-view');
-          }, 30 + (idx % 3) * 60);
+          }, 20 + (idx % 3) * 50);
+          filterTimeouts.push(t2);
         }
       });
     });
