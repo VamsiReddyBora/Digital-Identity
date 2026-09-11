@@ -122,6 +122,7 @@ html {
   scroll-padding-top: calc(var(--nav-height) + 20px);
   -webkit-text-size-adjust: 100%;
   width: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -1069,8 +1070,7 @@ code, pre {
   box-shadow: var(--glass-shadow-hover);
 }
 
-.project-card.hidden,
-.carpet-roll-wrapper.hidden {
+.project-card.hidden {
   display: none;
 }
 
@@ -1906,29 +1906,79 @@ a.contact-method-value:hover {
 }
 
 /* ==========================================================================
-   Card Slide-In Animation System
-   Cards slide up and fade in when scrolling into view,
-   slide back down and fade out when leaving.
+   Edge-to-Edge Slide-In & Slide-Out Animations (Horizontal Edge Slide)
+   Cards slide horizontally from the edges into place when scrolling into view,
+   and slide back into the edges when leaving view.
    ========================================================================== */
-.slide-card {
+.slide-edge-left,
+.slide-card.slide-from-left {
   opacity: 0;
-  transform: translateY(60px);
-  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+  transform: translate3d(-55px, 0, 0) scale3d(0.975, 0.975, 1);
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
               border-color var(--transition-base),
               box-shadow var(--transition-base);
-  will-change: opacity, transform;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
+.slide-edge-right,
+.slide-card.slide-from-right {
+  opacity: 0;
+  transform: translate3d(55px, 0, 0) scale3d(0.975, 0.975, 1);
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color var(--transition-base),
+              box-shadow var(--transition-base);
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Fallback for elements with slide-card class */
+.slide-card:not(.slide-edge-right):not(.slide-from-right) {
+  opacity: 0;
+  transform: translate3d(-55px, 0, 0) scale3d(0.975, 0.975, 1);
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color var(--transition-base),
+              box-shadow var(--transition-base);
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.slide-edge-left.in-view,
+.slide-edge-right.in-view,
 .slide-card.in-view {
   opacity: 1;
-  transform: translateY(0);
+  transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
 }
 
-.slide-card.in-view:hover {
-  transform: translateY(-6px) scale(1.008);
-  border-color: var(--glass-border-hover);
-  box-shadow: var(--glass-shadow-hover);
+@media (hover: hover) and (pointer: fine) {
+  .slide-edge-left.in-view:hover,
+  .slide-edge-right.in-view:hover,
+  .slide-card.in-view:hover {
+    transform: translate3d(0, -6px, 0) scale3d(1.008, 1.008, 1);
+    border-color: var(--glass-border-hover);
+    box-shadow: var(--glass-shadow-hover);
+    transition-duration: 0.25s;
+  }
+}
+
+/* Dynamic filter edge-slide animations */
+.project-card.filter-leaving {
+  opacity: 0;
+  transform: translate3d(-35px, 0, 0) scale3d(0.95, 0.95, 1);
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.35s ease;
+  pointer-events: none;
+}
+
+.project-card.filter-entering {
+  opacity: 0;
+  transform: translate3d(40px, 0, 0) scale3d(0.97, 0.97, 1);
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.6s ease;
 }
 
 /* ==========================================================================
@@ -2036,9 +2086,29 @@ a.contact-method-value:hover {
     gap: 1rem;
   }
 
+  /* Mobile: reduce horizontal slide distance to prevent overflow */
+  .slide-edge-left,
+  .slide-card.slide-from-left,
+  .slide-card:not(.slide-edge-right):not(.slide-from-right) {
+    transform: translate3d(-30px, 0, 0) scale3d(0.985, 0.985, 1);
+  }
+
+  .slide-edge-right,
+  .slide-card.slide-from-right {
+    transform: translate3d(30px, 0, 0) scale3d(0.985, 0.985, 1);
+  }
+
+  .slide-edge-left.in-view,
+  .slide-edge-right.in-view,
+  .slide-card.in-view {
+    transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+  }
+
   /* Mobile: disable hover lift on touch devices */
+  .slide-edge-left.in-view:hover,
+  .slide-edge-right.in-view:hover,
   .slide-card.in-view:hover {
-    transform: translateY(0);
+    transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
   }
 }
 
@@ -2071,6 +2141,17 @@ a.contact-method-value:hover {
 
   .footer-nav-link {
     font-size: 0.825rem;
+  }
+
+  .slide-edge-left,
+  .slide-card.slide-from-left,
+  .slide-card:not(.slide-edge-right):not(.slide-from-right) {
+    transform: translate3d(-20px, 0, 0) scale3d(0.99, 0.99, 1);
+  }
+
+  .slide-edge-right,
+  .slide-card.slide-from-right {
+    transform: translate3d(20px, 0, 0) scale3d(0.99, 0.99, 1);
   }
 }
 

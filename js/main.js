@@ -158,8 +158,9 @@ document.addEventListener('DOMContentLoaded', () => {
   sections.forEach((section) => sectionObserver.observe(section));
 
   /* ==========================================
-     5. Card Slide-In Animation
-        Cards slide up and fade in on scroll.
+     5. Card Slide-In & Slide-Out Animation System (Horizontal Edge Slide)
+        Cards slide in horizontally from the edges on scroll,
+        and slide back into the edges when leaving view.
      ========================================== */
   const elementsToAnimate = [
     document.querySelector('.stats-strip'),
@@ -184,31 +185,53 @@ document.addEventListener('DOMContentLoaded', () => {
     wrapper.remove();
   });
 
-  // Apply slide-card class and staggered delays
-  elementsToAnimate.forEach((card, index) => {
-    card.classList.add('slide-card');
-    card.classList.remove('carpet-fold-card', 'carpet-fold-left', 'carpet-fold-right', 'yoga-mat-card');
-    card.style.transitionDelay = `${(index % 4) * 80}ms`;
+  // Assign edge slide directions and staggered entry delays
+  elementsToAnimate.forEach((el, index) => {
+    el.classList.remove('carpet-fold-card', 'carpet-fold-left', 'carpet-fold-right', 'yoga-mat-card');
+
+    if (el.classList.contains('contact-info-card') || el.classList.contains('about-card') || el.classList.contains('stats-strip')) {
+      el.classList.add('slide-card', 'slide-edge-left');
+      el.dataset.delay = '0ms';
+    } else if (el.classList.contains('contact-form-card')) {
+      el.classList.add('slide-card', 'slide-edge-right');
+      el.dataset.delay = '80ms';
+    } else if (el.classList.contains('skill-category-card')) {
+      el.classList.add('slide-card', 'slide-edge-right');
+      el.dataset.delay = `${(index % 3) * 70}ms`;
+    } else if (el.classList.contains('timeline-content')) {
+      el.classList.add('slide-card', 'slide-edge-right');
+      el.dataset.delay = `${(index % 2) * 60}ms`;
+    } else {
+      // Projects & Certifications: alternate left and right edges
+      const isLeft = (index % 2 === 0);
+      el.classList.add('slide-card', isLeft ? 'slide-edge-left' : 'slide-edge-right');
+      el.dataset.delay = `${(index % 3) * 75}ms`;
+    }
+    el.style.transitionDelay = el.dataset.delay;
   });
 
   const slideObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
+        // Restore wave stagger delay on enter
+        entry.target.style.transitionDelay = entry.target.dataset.delay || '0ms';
         entry.target.classList.add('in-view');
       } else {
+        // Immediate smooth retreat into edge on exit without waiting for delay
+        entry.target.style.transitionDelay = '0ms';
         entry.target.classList.remove('in-view');
       }
     });
   }, {
     root: null,
-    threshold: 0.08,
-    rootMargin: '0px 0px -40px 0px'
+    threshold: 0.05,
+    rootMargin: '0px 0px -30px 0px'
   });
 
   elementsToAnimate.forEach((el) => slideObserver.observe(el));
 
   /* ==========================================
-     6. Project Filtering
+     6. Project Filtering with Edge Slide Dynamics
      ========================================== */
   filterBtns.forEach((btn) => {
     btn.addEventListener('click', () => {
@@ -222,15 +245,20 @@ document.addEventListener('DOMContentLoaded', () => {
         const shouldShow = (filterValue === 'all' || category === filterValue);
 
         if (!shouldShow) {
+          // Slide out into edges
+          card.classList.add('filter-leaving');
           card.classList.remove('in-view');
           setTimeout(() => {
             card.classList.add('hidden');
+            card.classList.remove('filter-leaving');
           }, 350);
         } else {
           card.classList.remove('hidden');
+          card.classList.add('filter-entering');
           setTimeout(() => {
+            card.classList.remove('filter-entering');
             card.classList.add('in-view');
-          }, 40 + idx * 50);
+          }, 30 + (idx % 3) * 60);
         }
       });
     });
